@@ -52,17 +52,17 @@ The following Architecture diagram shows how these components interact with each
 
 ## Acceptance Criteria
 
--[] To have at least one workload that has users and is autoscaled by the VPA.
--[] Creating an application to serve as a candidate for VPA testing, with varying workloads so that CPU/Memory utilization can be tracked in scenarios before VPA and after enabling VPA. 
--[] Grafana dashboards are built for visualizing these metrics.
+- [ ] To have at least one workload that has users and is autoscaled by the VPA.
+- [ ] Creating an application to serve as a candidate for VPA testing, with varying workloads so that CPU/Memory utilization can be tracked in scenarios before VPA and after enabling VPA. 
+- [ ] Grafana dashboards are built for visualizing these metrics.
 
 ## Major Milestones
--[] Install the VPA autoscaler via GitOps
--[] identify an application to serve as a candidate for VPA testing (see next point on POC)
--[] Create a POC in a demo k8s namespace showcasing VPA working
--[] Implement VPA for a live running service for heavy/fluctuating compute workloads
--[] Track CPU/Memory utilization in Grafana, confirming results
--[] Proceed to implement VPA for all compute heavy workloads
+- [ ] Install the VPA autoscaler via GitOps
+- [ ] Identify an application to serve as a candidate for VPA testing (see next point on POC)
+- [ ] Create a POC in a demo k8s namespace showcasing VPA working
+- [ ] Implement VPA for a live running service for heavy/fluctuating compute workloads
+- [ ] Track CPU/Memory utilization in Grafana, confirming results
+- [ ] Proceed to implement VPA for all compute heavy workloads
 
 ## Release Planning
 
