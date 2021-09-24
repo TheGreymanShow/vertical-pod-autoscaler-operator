@@ -48,6 +48,8 @@ GitOps approach to Continuous Delivery on Kubernetes is to continuously monitor 
 
 In this project, we are enabling the configuration of VPA through GitOps. The following diagram roughly explains how our workflow will be utilizing GitOps:
 
+![GitOps workflow](images/GitOpsFlow.png)
+
 ### 2. Vertical Pod Autoscaler (VPA)
 
 It ensures that a container’s resources are not under or over-utilized. It recommends optimized CPU and memory requests/limits values, and can also automatically update them so that the cluster resources are efficiently used.
