@@ -15,7 +15,7 @@ The goal of this project is to transform Operate First OCP clusters from manuall
 Our end-users are:
 
 1. DevOps engineers - monitoring and managing resource utilization. 
-2. Developers - developing and testing applications.
+2. Developers - deploying kubernetes/OpenShift applications or clusters.
 3. Cluster administrators - managing the whole cluster itself.
 
 The purpose here is to have better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources efficiently.
@@ -110,5 +110,10 @@ The following Architecture diagram shows how these components interact with each
 
 ## Mentors
 - Humair Khan (hukhan@redhat.com)
+<<<<<<< Updated upstream
+- Anand Sanmukhani (asanmukh@redhat.com)
+- Tom Coufal (tcoufal@redhat.com)
+=======
 - Anmol Sanmukh (asanmukh@redhat.com)
 - tcoufal@redhat.com
+>>>>>>> Stashed changes
