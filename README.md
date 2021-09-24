@@ -48,6 +48,8 @@ Below are the building blocks of VPA:
 - **VPA Updater**: Evict and restart the pod, if it is not running in the recommended settings. 
 
 The following Architecture diagram shows how these components interact with each other to autoscale a pod:
+    <br>
+    <br>
 ![VPA Architecture](images/vertical-pod-autoscaler-architecture.png)
 
 ## Acceptance Criteria
