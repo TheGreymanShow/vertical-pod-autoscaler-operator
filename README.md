@@ -4,25 +4,24 @@ Deploy Vertical Pod Auto-scaler operator and Implement Auto Scaling of compute r
 
 ## Vision and Goals of the project
 
-In Kubernetes, while actual workloads run within containers, Pods are in fact the smallest deployable unit of computing. This means that all compute resources (CPU/Memory) for any workload are specified at the Pod level. In Kubernetes, both forms of compute resources, CPU and Memory, are specified in similar ways, and are done so in a static manner. That is to say, when managing workloads via Pod, a human operator will first specify what compute resources this Pod will require to operate. It is not uncommon however, for a workload to demand more resources at peak times, while remaining mostly dormant during off peak hours. As one might expect, this results in either waste of compute resources or reduced pod performance.
+In Kubernetes, while actual workloads run within containers, Pods are in fact the smallest deployable unit of computing. This means that all compute resources (CPU/Memory) for any workload are specified at the Pod level. In Kubernetes, both forms of compute resources, CPU and Memory, are specified in similar ways and are done so in a static manner. When managing workloads via Pod, a human operator will first specify what compute resources this Pod will require to operate. It is not uncommon, however, for a workload to demand more resources at peak times, while remaining mostly dormant during off-peak hours. As one might expect, this results in either waste of compute resources or reduced pod performance.
  
-The solution here is to move away from manually specifying the compute resources for a pod that are static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod requires additional resources, and adjust it’s requirements accordingly during the lifetime of the Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically scale the resources for a pod based on its usage trends. 
+The solution here is to move away from manually specifying the compute resources for a pod that are static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod requires additional resources, and adjust its requirements accordingly during the lifetime of the Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically scale the resources for a pod based on its usage trends. 
 
-The goal of this project is to transform Operate First OCP clusters from manually specifying compute resource requirements for pods, and to instead use the VPA instead. Thus having all workloads automatically scale up/down their resources on a need basis.
+The goal of this project is to transform Operate First OCP clusters from manually specifying compute resource requirements for pods and to instead use the VPA instead. Thus having all workloads automatically scale up/down their resources on a need basis.
 
 ## Users & Personas of the project
 
-Our end users are:
+Our end-users are:
 
 1. DevOps engineers - monitoring and managing resource utilization. 
 2. Developers - developing and testing applications.
 3. Cluster administrators - managing the whole cluster itself.
 
-The purpose here is to have a better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources.
+The purpose here is to have better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources efficiently.
 
-VPA scales POD utilization by sending CPU requests and memory requests as a major thing on utilization. Additionally we also wanna monitor how this utilization changes. By the help of the monitorization of VPA usage, the users can also track to see how VPA contributed to effectiveness.
+VPA scales POD utilization by sending CPU and memory requests based on utilization. With the help of the monitorization of resources, users can also track to see how VPA contributed to effectiveness.
 
-Regarding the display of the dashboard below, resources such as CPU and memory will be allocated on Dashboard to compare the results before and after VPA is installed.
 
 ## Scope and Features of the project
 
