@@ -110,10 +110,5 @@ The following Architecture diagram shows how these components interact with each
 
 ## Mentors
 - Humair Khan (hukhan@redhat.com)
-<<<<<<< Updated upstream
 - Anand Sanmukhani (asanmukh@redhat.com)
 - Tom Coufal (tcoufal@redhat.com)
-=======
-- Anmol Sanmukh (asanmukh@redhat.com)
-- tcoufal@redhat.com
->>>>>>> Stashed changes
