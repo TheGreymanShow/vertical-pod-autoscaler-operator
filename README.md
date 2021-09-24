@@ -1,4 +1,4 @@
-## Vertical Pod Autoscaler Operator
+# Vertical Pod Autoscaler Operator
 Deploy Vertical Pod Auto-scaler operator and Implement Auto Scaling of compute resources
 
 
