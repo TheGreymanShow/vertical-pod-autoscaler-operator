@@ -61,7 +61,7 @@ Below are the building blocks of VPA:
 The following Architecture diagram shows how these components interact with each other to autoscale a pod:
     <br>
     <br>
-![VPA Architecture](images/vertical-pod-autoscaler-architecture.png)
+![VPA Architecture](images/vpa_architecture.png)
 
 VPA Flow [Image Source](https://banzaicloud.com/blog/k8s-vertical-pod-autoscaler/)
 
