@@ -16,8 +16,7 @@ Our end-users are:
 
 1. DevOps engineers - monitoring and managing resource utilization. 
 2. Developers - deploying kubernetes/OpenShift applications or clusters.
-3. Cluster administrators - managing the whole cluster that is placed across the board with the
-   other clusters.
+3. Cluster administrators - managing every cluster in a multi-cluster environment.
 
 The purpose here is to have better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources efficiently.
 
