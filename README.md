@@ -6,11 +6,13 @@ Deploy Vertical Pod Auto-scaler operator and Implement Auto Scaling of compute r
 
 In Kubernetes, while actual workloads run within containers, Pods are in fact the smallest deployable unit of computing. This means that all compute resources (CPU/Memory) for any workload are specified at the Pod level. In Kubernetes, both forms of compute resources, CPU and Memory, are specified in similar ways, and are done so in a static manner. That is to say, when managing workloads via Pod, a human operator will first specify what compute resources this Pod will require to operate. It is not uncommon however, for a workload to demand more resources at peak times, while remaining mostly dormant during off peak hours. As one might expect, this results in either waste of compute resources or reduced pod performance.
  
-The solution here is to move away from manually specifying the compute resources for a pod that are static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod requires additional resources, and adjust it’s requirements accordingly during the lifetime of the Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically scale the resources for a pod based on its usage trends. The goal of this project is to transform Operate First OCP clusters from manually specifying compute resource requirements for pods, and to instead use the VPA instead. Thus having all workloads automatically scale up/down their resources on a need basis.
+The solution here is to move away from manually specifying the compute resources for a pod that are static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod requires additional resources, and adjust it’s requirements accordingly during the lifetime of the Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically scale the resources for a pod based on its usage trends. 
+
+The goal of this project is to transform Operate First OCP clusters from manually specifying compute resource requirements for pods, and to instead use the VPA instead. Thus having all workloads automatically scale up/down their resources on a need basis.
 
 ## Users & Personas of the project
 
-Our end users are -
+Our end users are:
 
 1. DevOps engineers - monitoring and managing resource utilization. 
 2. Developers - developing and testing applications.
@@ -24,7 +26,15 @@ Regarding the display of the dashboard below, resources such as CPU and memory w
 
 ## Scope and Features of the project
 
-The scope of the project includes configuring Vertical Pod Autoscaler(VPA) through GitOps and confirming the efficiency in CPU/Memory utilization on an application deployed on Kubernetes cluster with fluctuating workload. We also wish to visualize these metrics using a dashboard.
+The scope of the project includes configuring Vertical Pod Autoscaler(VPA) through GitOps and tracking the efficiency in CPU/Memory utilization of an application deployed on the Kubernetes cluster with the fluctuating workload.
+
+### Major Milestones
+- [ ] Install the VPA autoscaler via GitOps
+- [ ] Identify an application to serve as a candidate for VPA testing (see next point on POC)
+- [ ] Create a POC in a demo k8s namespace showcasing VPA working
+- [ ] Implement VPA for a live running service for heavy/fluctuating compute workloads
+- [ ] Track CPU/Memory utilization in Grafana, confirming results
+- [ ] Proceed to implement VPA for all compute heavy workloads
 
 ### Out of Scope:
 
@@ -58,14 +68,6 @@ The following Architecture diagram shows how these components interact with each
 - [ ] Creating an application to serve as a candidate for VPA testing, with varying workloads so that CPU/Memory utilization can be tracked in scenarios before VPA and after enabling VPA. 
 - [ ] Grafana dashboards are built for visualizing these metrics.
 
-## Major Milestones
-- [ ] Install the VPA autoscaler via GitOps
-- [ ] Identify an application to serve as a candidate for VPA testing (see next point on POC)
-- [ ] Create a POC in a demo k8s namespace showcasing VPA working
-- [ ] Implement VPA for a live running service for heavy/fluctuating compute workloads
-- [ ] Track CPU/Memory utilization in Grafana, confirming results
-- [ ] Proceed to implement VPA for all compute heavy workloads
-
 ## Release Planning
 
 ### Sprint 1
@@ -73,24 +75,24 @@ The following Architecture diagram shows how these components interact with each
 
 ### Sprint 2 
 - Create a POC in a demo k8s namespace showcasing VPA working
-- Create and configure a k8s cluster
-- Create and deploy a sample application
-- Install VPA in the cluster via GitOps
+  - Create and configure a k8s cluster
+  - Create and deploy a sample application
+  - Install VPA in the cluster via GitOps
 
 ### Sprint 3
 - Implement VPA for a live running service for heavy/fluctuating compute workloads
-- Find a way to simulate fluctuating compute workloads
-- Run experiment on live service to see VPA in action
-- Analyse results
+  - Find a way to simulate fluctuating compute workloads
+  - Run experiment on live service to see VPA in action
+  - Analyse results
 
 ### Sprint 4
 - Track CPU/Memory utilization in Grafana, confirming results
-- Create Grafana dashboard with metrics
-- Configure app to publish metrics
-- Track metrics when VPA is in action
+  - Create Grafana dashboard with metrics
+  - Configure application to publish metrics
+  - Track metrics when VPA is in action
 
 ### Sprint 5 
-- Proceed to implement VPA for all compute-heavy/fluctuating workloads
+- Implement VPA for all compute-heavy/fluctuating workloads
 - Enable VPA via GitOps to all clusters
 
 
