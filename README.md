@@ -63,6 +63,8 @@ The following Architecture diagram shows how these components interact with each
     <br>
 ![VPA Architecture](images/vertical-pod-autoscaler-architecture.png)
 
+VPA Flow [Image Source](https://banzaicloud.com/blog/k8s-vertical-pod-autoscaler/)
+
 ## Acceptance Criteria
 
 - [ ] To have at least one workload that has users and is autoscaled by the VPA.
