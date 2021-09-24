@@ -28,9 +28,9 @@ Regarding the display of the dashboard below, resources such as CPU and memory w
 
 The scope of the project includes configuring Vertical Pod Autoscaler(VPA) through GitOps and tracking the efficiency in CPU/Memory utilization of an application deployed on the Kubernetes cluster with the fluctuating workload.
 
-### Major Milestones
+### Features/Major Milestones
 - [ ] Install the VPA autoscaler via GitOps
-- [ ] Identify an application to serve as a candidate for VPA testing (see next point on POC)
+- [ ] Identify an application to serve as a candidate for VPA testing
 - [ ] Create a POC in a demo k8s namespace showcasing VPA working
 - [ ] Implement VPA for a live running service for heavy/fluctuating compute workloads
 - [ ] Track CPU/Memory utilization in Grafana, confirming results
