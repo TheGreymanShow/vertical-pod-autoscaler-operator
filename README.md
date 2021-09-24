@@ -54,7 +54,7 @@ In this project, we are enabling the configuration of VPA through GitOps. The fo
 VPA ensures that a container’s resources are not under or over-utilized; recommends optimized CPU and memory requests/limits values, and can also automatically update them so that the cluster resources are efficiently used.
 
 Below are the building blocks of VPA:
-- **VPA Recommender**: This component reads the pod metrics from Prometheus and suggests resource recommendations to the VPA operator.
+- **VPA Recommender**: This component reads the pod metrics from Metrics Collector (kube-state-metrics) and suggests resource recommendations to the VPA operator.
 - **VPA Admission Controller**: Applies values suggested by the VPA Recommender. 
 - **VPA Updater**: Evict and restart the pod, if it is not running in the recommended settings. 
 
@@ -101,7 +101,7 @@ VPA Flow [Image Source](https://banzaicloud.com/blog/k8s-vertical-pod-autoscaler
 
 ## Technologies/Frameworks 
 
-- OpenShift/Kubernetes, Containers
+- OpenShift/Kubernetes, kube-state-metrics (KSM), Containers
 - Grafana, Prometheus
 - GitOps, ArgoCD
 
