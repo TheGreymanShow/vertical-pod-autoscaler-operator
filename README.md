@@ -16,11 +16,12 @@ Our end-users are:
 
 1. DevOps engineers - monitoring and managing resource utilization. 
 2. Developers - deploying kubernetes/OpenShift applications or clusters.
-3. Cluster administrators - managing the whole cluster itself.
+3. Cluster administrators - managing the whole cluster that is placed across the board with the
+   other clusters.
 
 The purpose here is to have better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources efficiently.
 
-VPA scales POD utilization by sending CPU and memory requests based on utilization. With the help of the monitorization of resources, users can also track to see how VPA contributed to effectiveness.
+VPA scales pod utilization by sending CPU and memory requests based on utilization. With the help of the monitorization of resources, users can also track to see how VPA contributed to effectiveness.
 
 
 ## Scope and Features of the project
@@ -43,7 +44,7 @@ The scope of the project includes configuring Vertical Pod Autoscaler(VPA) throu
 ## Solution Concept
 
 ### 1. GitOps Workflow
-GitOps approach to Continuous Delivery on Kubernetes is to continuously monitor the cluster's actual state and if it deviates from the desired state, it takes action to correct it. This uses Git repositories as a single source of truth to deliver infrastructure as code. 
+GitOps approach to Continuous Deployment on Kubernetes is to continuously monitor the cluster's actual state and if it deviates from the desired state, it takes action to correct it. This uses Git repositories as a single source of truth to deliver infrastructure as code. 
 
 In this project, we are enabling the configuration of VPA through GitOps. The following diagram roughly explains how our workflow will be utilizing GitOps:
 
@@ -51,10 +52,10 @@ In this project, we are enabling the configuration of VPA through GitOps. The fo
 
 ### 2. Vertical Pod Autoscaler (VPA)
 
-It ensures that a container’s resources are not under or over-utilized. It recommends optimized CPU and memory requests/limits values, and can also automatically update them so that the cluster resources are efficiently used.
+VPA ensures that a container’s resources are not under or over-utilized; recommends optimized CPU and memory requests/limits values, and can also automatically update them so that the cluster resources are efficiently used.
 
 Below are the building blocks of VPA:
-- **VPA Recommender**: This component reads the pod metrics from Prometheus and suggests resource recommendations to the VPA operator. ‘
+- **VPA Recommender**: This component reads the pod metrics from Prometheus and suggests resource recommendations to the VPA operator.
 - **VPA Admission Controller**: Applies values suggested by the VPA Recommender. 
 - **VPA Updater**: Evict and restart the pod, if it is not running in the recommended settings. 
 
