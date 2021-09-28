@@ -8,7 +8,7 @@ In Kubernetes, while actual workloads run within containers, Pods are in fact th
  
 The solution here is to move away from manually specifying the compute resources for a pod that are static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod requires additional resources, and adjust its requirements accordingly during the lifetime of the Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically scale the resources for a pod based on its usage trends. 
 
-The goal of this project is to transform Operate First OCP clusters from manually specifying compute resource requirements for pods and to instead use the VPA instead. Thus having all workloads automatically scale up/down their resources on a need basis.
+The goal of this project is to transform Operate First OCP clusters from manually specifying compute resource requirements for pods and to use the VPA instead. Thus having all workloads automatically scale up/down their resources on a need basis.
 
 ## Users & Personas of the project
 
