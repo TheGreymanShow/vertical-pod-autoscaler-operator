@@ -26,7 +26,8 @@ https://k6.io/blog/running-distributed-tests-on-k8s/
 
 ### Option 2
 
-### Option 3
+### Option 3: K8s Resource Consumer
+Credits/More info: https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer
 
 Resource Consumer is primarily developed to test k8s autoscaling. It helps to test cluster size autoscaling, Horizontal Pod Autoscaler(HPA), and Vertical Pod Autoscaler(VPA) operators in Kubernetes. This tool allows to generate CPU/Memory consumption in a container.
 
@@ -44,14 +45,14 @@ kubectl get services resource-consumer
 or by creating a ```deployment.yaml``` file by specifying ```spec.template.spec.containers[].image: gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9``` and deploying it using ```kubectl apply -f <filename.yaml>```
 
 #### To send HTTP request for CPU - 
-API - /ConsumeCPU
-params - millicores & durationSec
-Example command - curl --data "millicores=600&durationSec=100" http://<EXTERNAL_IP>/ConsumeCPU
+API: /ConsumeCPU
+params: millicores & durationSec
+Example command: curl --data "millicores=600&durationSec=100" http://<EXTERNAL_IP>/ConsumeCPU
 
 #### To send HTTP request for CPU - 
-API - /ConsumeMem
-params - megabytes & durationSec
-Example command - curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_IP>/ConsumeMem
+API: /ConsumeMem
+params: megabytes & durationSec
+Example command: curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_IP>/ConsumeMem
 
 
 ## Comparison
@@ -61,7 +62,7 @@ Example command - curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_I
 | Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               |         | Easy to control CPU consumption using simple curl command.                      |
 | Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                |         | Easy to control Memory consumption using simple curl command.                      |
 | Ease of setup/development          | Easy to configure K6 but some effort is required to deploy a web server to pod. |         | Easy setup using existing image that includes backend HTTP server and controller logic to stress resources.                      |
-| Compatibilty                                  |                                 |         | Primarily developed to test k8s HPA, VPA, and cluster autoscaling                      |
+| Compatibilty                                  |                                 |         | Primarily developed to test k8s autoscaling.                      |
 
 ## Preferred Approach and reason
 
