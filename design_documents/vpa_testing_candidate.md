@@ -44,12 +44,12 @@ kubectl get services resource-consumer
 or by creating a ```deployment.yaml``` file and specifying ```spec.template.spec.containers[].image: gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9``` and deploying it using ```kubectl apply -f <filename.yaml>```
 
 #### HTTP request for CPU Consumption - 
-- API: **/ConsumeCPU**
+- API Route: **/ConsumeCPU**
 - params: millicores & durationSec
 - Example command: curl --data "millicores=600&durationSec=100" http://<EXTERNAL_IP>/ConsumeCPU
 
 #### HTTP request for Memory Consumption - 
-- API: **/ConsumeMem**
+- API Route: **/ConsumeMem**
 - params: megabytes & durationSec
 - Example command: curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_IP>/ConsumeMem
 
