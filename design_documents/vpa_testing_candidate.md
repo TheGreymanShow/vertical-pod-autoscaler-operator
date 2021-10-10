@@ -31,7 +31,7 @@ Credits/More info: https://github.com/kubernetes/kubernetes/tree/master/test/ima
 
 Resource Consumer is primarily developed to test k8s autoscaling. It helps to test cluster size autoscaling, Horizontal Pod Autoscaler(HPA), and Vertical Pod Autoscaler(VPA) operators in Kubernetes. This tool allows to generate CPU/Memory consumption in a container.
 
-#### Usage:
+#### Introduction
 Resource Consumer starts an HTTP server in a container and handles POST requests by creating a new process for each request.
 The container consumes requested amount of resources and can be specified as follows -
 CPU in millicores
