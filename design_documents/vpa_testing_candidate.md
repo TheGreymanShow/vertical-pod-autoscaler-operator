@@ -42,7 +42,7 @@ Memory in megabytes
 kubectl run resource-consumer --image=gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }' --port 8080 --requests='cpu=500m,memory=256Mi'
 kubectl get services resource-consumer
 ```
-or by creating a ```deployment.yaml``` file by specifying ```spec.template.spec.containers[].image: gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9``` and deploying it using ```kubectl apply -f <filename.yaml>```
+or by creating a ```deployment.yaml``` file and specifying ```spec.template.spec.containers[].image: gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9``` and deploying it using ```kubectl apply -f <filename.yaml>```
 
 #### To send HTTP request for CPU - 
 - API: **/ConsumeCPU**
