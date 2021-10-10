@@ -45,12 +45,12 @@ or by creating a ```deployment.yaml``` file and specifying ```spec.template.spec
 
 #### HTTP request for CPU Consumption - 
 - API Route: ```/ConsumeCPU```
-- params: millicores & durationSec
+- params: ```millicores``` & ```durationSec```
 - Example command: ```curl --data "millicores=600&durationSec=100" http://<EXTERNAL_IP>/ConsumeCPU```
 
 #### HTTP request for Memory Consumption - 
 - API Route: ```/ConsumeMem```
-- params: megabytes & durationSec
+- params: ```megabytes``` & ```durationSec```
 - Example command: ```curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_IP>/ConsumeMem```
 
 
