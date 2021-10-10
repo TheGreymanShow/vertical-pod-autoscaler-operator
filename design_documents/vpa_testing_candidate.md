@@ -32,9 +32,9 @@ https://k6.io/blog/running-distributed-tests-on-k8s/
 
 | Criteria\Approach                  | Web Server + Load testing tools | Scripts | K8s Resource Consumer |
 |------------------------------------|---------------------------------|---------|-----------------------|
-| Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               |         |                       |
-| Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                |         |                       |
-| Ease of setup/development          | Easy to configure K6 but some effort is required to deploy a web server to pod. |         |                       |
+| Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               |         | Easy to control CPU consumption using simple curl command.                      |
+| Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                |         | Easy to control Memory consumption using simple curl command.                      |
+| Ease of setup/development          | Easy to configure K6 but some effort is required to deploy a web server to pod. |         | Easy setup using existing image that includes backend server. Communicates via API using HTTP requests.                      |
 |                                    |                                 |         |                       |
 
 ## Preferred Approach and reason
