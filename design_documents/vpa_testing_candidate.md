@@ -28,6 +28,32 @@ https://k6.io/blog/running-distributed-tests-on-k8s/
 
 ### Option 3
 
+Resource Consumer is primarily developed to test k8s autoscaling. It helps to test cluster size autoscaling, Horizontal Pod Autoscaler(HPA), and Vertical Pod Autoscaler(VPA) operators in Kubernetes. This tool allows to generate CPU/Memory consumption in a container.
+
+#### Usage:
+Resource Consumer starts an HTTP server in a container and handles POST requests by creating a new process for each request.
+The container consumes requested amount of resources and can be specified as follows -
+CPU in millicores
+Memory in megabytes
+
+#### Install Resource Consumer
+```
+kubectl run resource-consumer --image=gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9 --expose --service-overrides='{ "spec": { "type": "LoadBalancer" } }' --port 8080 --requests='cpu=500m,memory=256Mi'
+kubectl get services resource-consumer
+```
+or by creating a ```deployment.yaml``` file by specifying ```spec.template.spec.containers[].image: gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9``` and deploying it using ```kubectl apply -f <filename.yaml>```
+
+#### To send HTTP request for CPU - 
+API - /ConsumeCPU
+params - millicores & durationSec
+Example command - curl --data "millicores=600&durationSec=100" http://<EXTERNAL_IP>/ConsumeCPU
+
+#### To send HTTP request for CPU - 
+API - /ConsumeMem
+params - megabytes & durationSec
+Example command - curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_IP>/ConsumeMem
+
+
 ## Comparison
 
 | Criteria\Approach                  | Web Server + Load testing tools | Scripts | K8s Resource Consumer |
