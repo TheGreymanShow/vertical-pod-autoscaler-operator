@@ -46,12 +46,16 @@ or by creating a ```deployment.yaml``` file by specifying ```spec.template.spec.
 
 #### To send HTTP request for CPU - 
 API: /ConsumeCPU
+
 params: millicores & durationSec
+
 Example command: curl --data "millicores=600&durationSec=100" http://<EXTERNAL_IP>/ConsumeCPU
 
 #### To send HTTP request for Memory - 
 API: /ConsumeMem
+
 params: megabytes & durationSec
+
 Example command: curl --data "megabytes=200&durationSec=100" http://<EXTERNAL_IP>/ConsumeMem
 
 
