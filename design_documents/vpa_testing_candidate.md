@@ -57,7 +57,7 @@ or by creating a ```deployment.yaml``` file and specifying ```spec.template.spec
 
 ## Comparison
 
-| Criteria\Approach                  | Web Server + Load testing tools | Scripts | K8s Resource Consumer |
+| Criteria/Approach                  | Web Server + Load testing tools | Scripts | K8s Resource Consumer |
 |------------------------------------|---------------------------------|---------|-----------------------|
 | Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               |         | Easy to control CPU consumption using simple curl command.                      |
 | Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                |         | Easy to control Memory consumption using simple curl command.                      |
