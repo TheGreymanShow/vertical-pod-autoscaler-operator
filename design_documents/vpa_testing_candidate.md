@@ -33,7 +33,7 @@ Resource Consumer is primarily developed to test k8s autoscaling. It helps to te
 
 #### Introduction
 Resource Consumer starts an HTTP server in a container and handles POST requests by creating a new process for each request.
-The container consumes requested amount of resources and can be specified as follows:
+The container consumes requested amount of resources and are specified as follows:
 - CPU in millicores
 - Memory in megabytes
 
