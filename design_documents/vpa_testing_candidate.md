@@ -24,7 +24,23 @@ https://k6.io/docs/getting-started/running-k6/
 How to run distributed K6 tests on K8s cluster:
 https://k6.io/blog/running-distributed-tests-on-k8s/
 
-### Option 2
+### Option 2 Stress Ng 
+
+#### Introduction
+Stress Ng is an open source took that creates stress load in cpu and memory. 
+https://www.mankier.com/1/stress-ng#Description
+
+#### Examples of stress-ng:
+stress-ng --cpu 2 --io 2 --vm 1 --vm-bytes 1G --timeout 60s
+runs for 60 seconds with 2 cpu stressors, 2 io stressors and 1 vm stressor using 1GB of virtual memory.
+
+#### How to deploy:
+In order to deploy this tool in Openshift, we can create the application using public docker images https://hub.docker.com/r/alexeiled/stress-ng/
+
+```
+oc new-app alexeiled/stress-ng/
+```
+
 
 ### Option 3: K8s Resource Consumer
 Credits/More info: https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer
@@ -58,10 +74,10 @@ or by creating a ```deployment.yaml``` file and specifying ```spec.template.spec
 
 | Criteria/Approach                  | Web Server + Load testing tools | Scripts | K8s Resource Consumer |
 |------------------------------------|---------------------------------|---------|-----------------------|
-| Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               |         | Easy to control CPU consumption using simple curl command.                      |
-| Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                |         | Easy to control Memory consumption using simple curl command.                      |
-| Ease of setup/development          | Easy to configure K6 but some effort is required to deploy a web server to pod. |         | Easy setup using existing image that includes backend HTTP server and controller logic to stress resources.                      |
-| Compatibility                      | K6 is configurable with Grafana & Easy to load test K8s pod via K6 CLI tool.                                 |         | Primarily developed to test k8s autoscaling.                      |
+| Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               | using -cpu arguments we can specify the number of cpu stessors. --cpu-ops arguments lets us specify the number of bogo operations.    | Easy to control CPU consumption using simple curl command.                      | 
+| Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                | --vm lets us specify the number of memory stressors. --vm-bytes to specify the percentage of memory to be used.       | Easy to control Memory consumption using simple curl command.                      |
+| Ease of setup/development          | Easy to configure K6 but some effort is required to deploy a web server to pod. | Easy to deploy using stress-ng docker image, but arguments cannot be dynamically passed, since we need to specify the arguments in yaml file  | Easy setup using existing image that includes backend HTTP server and controller logic to stress resources.                      |
+| Compatibility                      | K6 is configurable with Grafana & Easy to load test K8s pod via K6 CLI tool.                                 | Intended for any type of machine.     | Primarily developed to test k8s autoscaling.                      |
 
 ## Preferred Approach and reason
 
