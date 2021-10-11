@@ -32,6 +32,7 @@ https://www.mankier.com/1/stress-ng#Description
 
 #### Examples of stress-ng:
 stress-ng --cpu 2 --io 2 --vm 1 --vm-bytes 1G --timeout 60s
+
 runs for 60 seconds with 2 cpu stressors, 2 io stressors and 1 vm stressor using 1GB of virtual memory.
 
 #### How to deploy:
