@@ -61,7 +61,7 @@ or by creating a ```deployment.yaml``` file and specifying ```spec.template.spec
 | Ability to control CPU load        | It is not a trivial task to control the CPU utilization with server request.                               |         | Easy to control CPU consumption using simple curl command.                      |
 | Ability to control Memory workload | It is easily configurable how much memory will be consumed with each request in web server.                                |         | Easy to control Memory consumption using simple curl command.                      |
 | Ease of setup/development          | Easy to configure K6 but some effort is required to deploy a web server to pod. |         | Easy setup using existing image that includes backend HTTP server and controller logic to stress resources.                      |
-| Compatibilty                                  |                                 |         | Primarily developed to test k8s autoscaling.                      |
+| Compatibility                      | K6 is configurable with Grafana & Easy to load test K8s pod via K6 CLI tool.                                 |         | Primarily developed to test k8s autoscaling.                      |
 
 ## Preferred Approach and reason
 
