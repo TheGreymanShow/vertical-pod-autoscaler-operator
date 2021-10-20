@@ -40,3 +40,15 @@ spec:
     targetPort: 8080
   selector:
     app: resource-consumer
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: rc-vpa
+spec:
+  host: rc-vpa-neu-cs6620.apps.smaug.na.operate-first.cloud
+  to:
+    kind: Service
+    name: rc-service
+  port:
+    targetPort: 8080
