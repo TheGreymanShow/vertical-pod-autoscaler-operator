@@ -60,7 +60,7 @@ kind: CronJob
 metadata:
   name: rc-cron-job
 spec:
-  schedule: "*/5 8-17 * * *"
+  schedule: "*/10 8-17 * * *"
   jobTemplate:
     spec:
       template:
