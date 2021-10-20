@@ -9,11 +9,10 @@ spec:
       template:
         spec:
           containers:
-          - name: resource-consumer
-            image: busybox
-            imagePullPolicy: IfNotPresent
+          - name: cron-resource-consumer
+            image: buildpack-deps:curl
             command:
             - /bin/sh
-            - -c
-            - date; echo Hello from the Kubernetes cluster
+            - -ec
+            - curl --data "millicores=600&durationSec=500" http://resource-consumer/ConsumeCPU
           restartPolicy: OnFailure
