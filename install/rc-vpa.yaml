@@ -1,0 +1,21 @@
+apiVersion: "autoscaling.k8s.io/v1beta2"
+kind: VerticalPodAutoscaler
+metadata:
+  name: resource-consumer
+  namespace: cs6620-fall21-deployverticalpod
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: rc-deployment
+  updatePolicy:
+    updateMode: "Auto"
+
+---
+apiVersion: autoscaling.openshift.io/v1
+kind: VerticalPodAutoscalerController
+metadata:
+  name: resource-consumer
+  namespace: cs6620-fall21-deployverticalpod
+spec:
+  minReplicas: 1

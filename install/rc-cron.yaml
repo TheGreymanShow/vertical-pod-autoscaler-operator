@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: rc-cpu-cron-job
+spec:
+  schedule: "*/10 8-17 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cron-resource-consumer
+            image: buildpack-deps:curl
+            command:
+            - /bin/sh
+            - -ec
+            - curl --data "millicores=600&durationSec=500" http://rc-vpa-neu-cs6620.apps.smaug.na.operate-first.cloud/ConsumeCPU
+            - echo "DONE!"
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: rc-mem-cron-job
+spec:
+  schedule: "*/5 8-17 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cron-resource-consumer
+            image: buildpack-deps:curl
+            command:
+            - /bin/sh
+            - -ec
+            - curl --data "megabytes=400&durationSec=200" http://rc-vpa-neu-cs6620.apps.smaug.na.operate-first.cloud/ConsumeMem
+            - echo "DONE!"
+          restartPolicy: OnFailure
