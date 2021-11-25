@@ -1,0 +1,22 @@
+apiVersion: "autoscaling.k8s.io/v1"
+kind: VerticalPodAutoscaler
+metadata:
+  name: trino-stage-v1
+  namespace: opf-trino-stage
+  labels:
+    app: trino-stage-v1
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: trino-worker
+  updatePolicy:
+    updateMode: "Auto"
+  resourcePolicy:
+    containerPolicies:
+    - containerName: "trino-worker"
+      maxAllowed:
+        cpu: "3000m"
+        memory: "4Gi"
+      minAllowed:
+        cpu: 400m
