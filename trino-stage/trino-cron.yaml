@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: trino-stage-v1-cron
+spec:
+  schedule: "*/30 8-17 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: trino-stage-v1-cron
+            image: quay.io/opendatahub/trino:362
+            command:
+            - /bin/sh
+            - -ec
+            - trino --version
+            - echo "DONE!"
+          restartPolicy: OnFailure
