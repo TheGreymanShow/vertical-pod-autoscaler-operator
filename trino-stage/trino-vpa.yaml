@@ -17,6 +17,6 @@ spec:
     - containerName: "trino-worker"
       maxAllowed:
         cpu: "3000m"
-        memory: "4Gi"
+        memory: "3Gi"
       minAllowed:
         cpu: 400m

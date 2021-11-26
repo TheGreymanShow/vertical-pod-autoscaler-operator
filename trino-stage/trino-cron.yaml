@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: trino-stage-v1-cron
 spec:
-  schedule: "*/30 * * * *"
+  schedule: "0 8-18 * * *"
   jobTemplate:
     spec:
       template:
@@ -11,11 +11,13 @@ spec:
           containers:
           - name: trino-stage-v1-cron
             image: quay.io/opendatahub/trino:362
+            env:
+            - name: TRINO_PASSWORD
+              value: "trino-stage"
             command:
             - /bin/sh
             - -ec
-            - trino --version
-            - TRINO_PASSWORD=trino-stage trino --user=admin --password --server=https://trino-route-opf-trino-stage.apps.smaug.na.operate-first.cloud --catalog=operate_first_general --schema=test_schema --execute="select * from test_pass_failures where "timestamp" IN (select b.timestamp from test_pass_failures b where b.test like '%test%' and "timestamp" IN (select "timestamp" from test_pass_failures where tab LIKE'%redhat-assisted-installer%')) limit 5000;"
+            - trino --user=admin --password --server=https://trino-route-opf-trino-stage.apps.smaug.na.operate-first.cloud --catalog=operate_first_general --schema=test_schema --execute="select * from test_pass_failures where "timestamp" IN (select b.timestamp from test_pass_failures b where b.test like '%test%' and "timestamp" IN (select "timestamp" from test_pass_failures where tab LIKE'%redhat-assisted-installer%')) limit 2000;"
             - trino --version
             - echo "DONE!"
           restartPolicy: OnFailure
