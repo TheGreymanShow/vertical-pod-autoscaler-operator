@@ -28,7 +28,7 @@ spec:
 
 Initial VPA reco on creation:
 
-​		 ![Screenshot 2021-11-22 at 8.52.08 PM](images/Screenshot 2021-11-22 at 8.52.08 PM.png)
+​		 ![Screenshot 2021-11-22 at 8.52.08 PM](images/Screenshot%202021-11-22%20at%208.52.08%20PM.png)
 
 3651757469 =~ 3.65 gb upper bound
 
@@ -38,7 +38,7 @@ Initial VPA reco on creation:
 
 Usage at the time of creation:
 
-2021-11-22 20:49:40 ![Screenshot 2021-11-22 at 8.55.22 PM](images/Screenshot 2021-11-22 at 8.55.22 PM.png)
+2021-11-22 20:49:40 ![Screenshot 2021-11-22 at 8.55.22 PM](images/Screenshot%202021-11-22%20at%208.55.22%20PM.png)
 
 After VPA is enabled, pods got auto-updated with values immediately:
 
@@ -55,25 +55,25 @@ CPU is reduced from 500m to 25m
 
 Memory is increased from 2gb to ~3gb
 
-![Screenshot 2021-11-23 at 8.45.06 AM](images/Screenshot 2021-11-23 at 8.45.06 AM.png)
+![Screenshot 2021-11-23 at 8.45.06 AM](images/Screenshot%202021-11-23%20at%208.45.06%20AM.png)
 
-![Screenshot 2021-11-23 at 8.45.12 AM](images/Screenshot 2021-11-23 at 8.45.12 AM.png)
+![Screenshot%202021-11-23%20at%208.45.12%20AM](images/Screenshot%202021-11-23%20at%208.45.12%20AM.png)
 
 
 
-![Screenshot 2021-11-23 at 8.45.55 AM](images/Screenshot 2021-11-23 at 8.45.55 AM.png)
+![Screenshot%202021-11-23%20at%208.45.55%20AM](images/Screenshot%202021-11-23%20at%208.45.55%20AM.png)
 
-![Screenshot 2021-11-23 at 8.46.02 AM](images/Screenshot 2021-11-23 at 8.46.02 AM.png)
+![Screenshot%202021-11-23%20at%208.46.02%20AM](images/Screenshot%202021-11-23%20at%208.46.02%20AM.png)
 
 =====
 
 Recommendation after 15mins of VPA creation:
 
-![Screenshot 2021-11-22 at 9.03.25 PM](images/Screenshot 2021-11-22 at 9.03.25 PM.png)
+![Screenshot 2021-11-22 at 9.03.25 PM](images/Screenshot%202021-11-22%20at%209.03.25%20PM.png)
 
 Recommendation after 12hours of VPA creation:
 
-![Screenshot 2021-11-23 at 8.48.32 AM](images/Screenshot 2021-11-23 at 8.48.32 AM.png)
+![Screenshot 2021-11-23 at 8.48.32 AM](images/Screenshot%202021-11-23%20at%208.48.32%20AM.png)
 
 =====
 
@@ -81,9 +81,9 @@ After 1 day:
 
 After running some big queries for a period of time, memory limit raised from 3gb to 4gb.
 
-![Screenshot 2021-11-25 at 5.17.13 PM](images/Screenshot 2021-11-25 at 5.17.13 PM.png)
+![Screenshot 2021-11-25 at 5.17.13 PM](images/Screenshot%202021-11-25%20at%205.17.13%20PM.png)
 
-![Screenshot 2021-11-25 at 5.19.41 PM](images/Screenshot 2021-11-25 at 5.19.41 PM.png)
+![Screenshot 2021-11-25 at 5.19.41 PM](images/Screenshot%202021-11-25%20at%205.19.41%20PM.png)
 
-![Screenshot 2021-11-25 at 5.20.48 PM](images/Screenshot 2021-11-25 at 5.20.48 PM.png)
+![Screenshot%202021-11-25%20at%205.20.48%20PM](images/Screenshot%202021-11-25%20at%205.20.48%20PM.png)
 
