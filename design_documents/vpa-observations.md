@@ -1,5 +1,7 @@
 # Various test cases with VPA and its observations
 
+This document explains the various test cases that we tested VPA on, divided into memory and cpu utilization. The following are the observations made for each of these...
+
 ## When memory is under utilized
 
 | Time Period |  Pod's CPU Req  | Pod's Memory Req | Pod's CPU Limit| Pod's Memory Limit |  Cron CPU Request | Cron Memory Request | VPA CPU Recomm |   VPA Mem Recomm | Was VPA applied? |
