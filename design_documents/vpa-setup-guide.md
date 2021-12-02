@@ -1,6 +1,6 @@
 # VPA Setup Guide
 
-This document introduces the VPA operator for Kubernetes, and explains how to set it up for your cluster.
+This document introduces the VPA operator for Kubernetes, how it works and how you can set it up to use it for your cluster.
 
 ## Introduction
 
@@ -35,11 +35,11 @@ Cluster administrators can install Operators to an OpenShift Container Platform 
 
 ### VPA installation with OperatorHub
 
-- OperatorHub is a user interface for discovering Operators; it works in conjunction with Operator Lifecycle Manager (OLM), which installs and manages Operators on a cluster.
+OperatorHub is a user interface for discovering Operators; it works in conjunction with Operator Lifecycle Manager (OLM), which installs and manages Operators on a cluster.
 
-- As a cluster administrator, you can install an Operator from OperatorHub using the OpenShift Container Platform web console or CLI. Subscribing an Operator to one or more namespaces makes the Operator available to developers on your cluster.
+As a cluster administrator, you can install an Operator from OperatorHub using the OpenShift Container Platform web console or CLI. Subscribing an Operator to one or more namespaces makes the Operator available to developers on your cluster.
 
-- You can install and subscribe to an Operator from OperatorHub using the OpenShift Container Platform web console.
+You can install and subscribe to an Operator from OperatorHub using the OpenShift Container Platform web console.
 
 ### Prerequisites
 - Access to an OpenShift Container Platform cluster using an account with cluster-admin permissions.
