@@ -1,0 +1,7 @@
+apiVersion: autoscaling.openshift.io/v1
+kind: VerticalPodAutoscalerController
+metadata:
+  name: resource-consumer
+  namespace: cs6620-fall21-deployverticalpod
+spec:
+  minReplicas: 1
