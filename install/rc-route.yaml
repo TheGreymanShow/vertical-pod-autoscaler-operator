@@ -1,0 +1,10 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: rc-vpa
+spec:
+  to:
+    kind: Service
+    name: rc-service
+  port:
+    targetPort: 8080
