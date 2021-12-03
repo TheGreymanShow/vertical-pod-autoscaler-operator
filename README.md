@@ -125,3 +125,12 @@ Once the recommendations changes, move to the next step.
 
 ## How to check VPA changing the pod's metrics in Auto mode?
 
+
+## References
+
+### Sprint demo videos
+* Sprint 1: https://www.youtube.com/watch?v=ywLisR5bDBU
+* Sprint 2: https://www.youtube.com/watch?v=UBJ5ZRhaJ8E
+* Sprint 3: https://www.youtube.com/watch?v=Fw19E8Pim98
+* Sprint 4: https://www.youtube.com/watch?v=yjxxSzkpgz8
+* Sprint 5: https://www.youtube.com/watch?v=Got3TFkyAlA
