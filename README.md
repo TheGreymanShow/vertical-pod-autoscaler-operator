@@ -7,7 +7,6 @@
 Vertical Pod Autoscaler automatically updates the limits and requests of resources (both CPU and memory) by reviewing the historic resource usages and as well their current. 
 
 
-
 ## Tech Stack for this Demo
 - RedHat OpenShift Cluster Platform (OCP)
   -  Note: VPA is provided by Kubernetes, so you can work with VPA with any other cloud platform, but we have used OCP and hence the instructions are provided for that here.
