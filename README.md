@@ -4,6 +4,10 @@
 
 ## What is Vertical Pod AutoScaler (VPA)?
 
+Vertical Pod Autoscaler automatically updates the limits and requests of resources (both CPU and memory) by reviewing the historic resource usages and as well their current. 
+
+
+
 ## Tech Stack for this Demo
 - RedHat OpenShift Cluster Platform (OCP)
   -  Note: VPA is provided by Kubernetes, so you can work with VPA with any other cloud platform, but we have used OCP and hence the instructions are provided for that here.
@@ -133,13 +137,13 @@ NOTE: We use this route to send requests to our resource consumer application de
       1. Change the "namespace" under metadata, to your namespace   
 9. Click on "Create"
 
-## How to see VPA recommendation? 
+### How to see VPA recommendation? 
 You can see VPA recommendations through ocp command line in terminal or in your OCP web console. We will list both the ways here
 
-### Using kubectl 
+#### Using kubectl 
 `kubectl get vpa <vpa-custom-resource> --output yaml`
 
-### Using OCP web console
+#### Using OCP web console
 1. In Administrator tab, click on "Home" -> "API Explorer".
 2. Type "VerticalPodAutoscalerController" in filter by kind text box on the top right.
 3. Click on "VerticalPodAutoscalerController"
@@ -148,9 +152,9 @@ You can see VPA recommendations through ocp command line in terminal or in your 
 
 TODO: Attach a photo of recommendations here. 
 
-## How to check VPA changing the pod's metrics in Initial mode?
+### How to check VPA changing the pod's metrics in Initial mode?
 
-### Change the workload
+#### Change the workload
 For the recommendations to change, we need to change the workload. We can do this by the below steps.
 
 1. Copy the route you created for your deployment. 
@@ -169,10 +173,16 @@ Once the recommendations changes, move to the next step.
 - Delete the pod of your deployment, the pod will be automatically recreated since the resource policy is rolling-update. 
 - The newly created pod will have the request value equal to the 'target' provided by the vpa recommendations.  
 
-## How to check VPA changing the pod's metrics in Auto mode?
+### How to check VPA changing the pod's metrics in Auto mode?
 
 
-## References
+### Future Work
+1. Expose the VPA recommendations metrics using kube-state-metrics to query in PromQL. [Refer this](https://github.com/kubernetes/kube-state-metrics/blob/master/docs/verticalpodautoscaler-metrics.md).
+2. Install VPA in Jupyter Lab namespace in OCP
+      1. Jupyter Lab namespace does not have deployments only has pods. (VPA only works with Deployments, StatefulSets, DaemonSets, ReplicaSets etc. You cannot use it with a standalone Pod that does not have an owner.)
+      2. Hence, we can create a custom controller and associate it with pods and associate the created custom controller to VPA custom resource.
+
+### References
 
 ### Sprint demo videos
 * Sprint 1: https://www.youtube.com/watch?v=ywLisR5bDBU
