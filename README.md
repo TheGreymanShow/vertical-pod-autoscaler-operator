@@ -14,13 +14,17 @@
  
 
 ## Steps to setup VPA in your namespace
+You can setup these steps using kubectl in your terminal or through OpenShift Cluster web page. Both the ways are mentioned these. We would recommend using kubectl as it is much easier.  
 
 ### Prerequisites
 We are assuming that you already have the following:
 - a RedHat OpenShift Cluster Platform (OCP) and namespace ready to work on. 
 - admin access in your cluster (This is required to install VPA operator in your cluster)
+- kubectl installed in your local machine
+- openshift command line interface installed. Refer [this link](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html#cli-installing-cli-on-macos_cli-developer-commands)
+- [Only for kubectl] login to your OCP in terminal (Use copy login command)
 
-### Install VPA operator in your cluster 
+### Install VPA operator in your cluster in web console
 1. In OCP, click on "Operators" -> "Operator Hub"
 2. Choose " VerticalPodAutoscaler" and click Install
 3. On the Install Operator page, ensure that the Operator recommended namespace option is selected. This installs the Operator in the mandatory openshift-vertical-pod-autoscaler namespace, which is automatically created if it does not exist.
@@ -37,6 +41,13 @@ We are assuming that you already have the following:
 ### Inital Setup in your namespace
 
 #### Create a deployment
+
+##### Using kubectl
+1. Create a yaml file with the [exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-depl.yaml)
+2. [Optional] you can change the name of the deployment, containers and app.
+3. Execute the command `kubectl apply -f <deployment-yaml-file>`
+
+##### Using Web Console
 1. Go to "Workloads" in your namespace under "Administrator" tab in moc/smaug.
 2. Click on "Deployments" on the left side navigation bar.
 3. Click on "Create Deployments" button which will open the yaml file. 
@@ -46,6 +57,13 @@ We are assuming that you already have the following:
 7. Click on "Create"
 
 #### Create a service
+
+##### Using kubectl
+1. Create a yaml file with the [exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-service.yaml).
+2. [Optional] you can change the name of the service.
+3. Execute the command `kubectl apply -f <service-yaml-file>`
+
+##### Using Web Console
 1. Go to "Networking" in your namespace under "Administrator" tab in moc/smaug.
 2. Click on "Services" on the left side navigation bar.
 3. Click on "Create Service" button which will open the yaml file.
@@ -56,18 +74,35 @@ We are assuming that you already have the following:
 8. Click on "Create"
 
 #### Create a route 
+
+##### Using kubectl
+1. Create a yaml file with the [exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-route.yaml).
+2. Verify the "name" entry of the service under spec: matches the name of the service you created.
+3. [Optional] you can change the name of the route.
+4. Execute the command `kubectl apply -f <route-yaml-file>`
+
+##### Using Web Console
 1. Go to "Networking" in your namespace under "Administrator" tab in moc/smaug.
 2. Click on "Routes" on the left side navigation bar.
 3. Click on "Create Route" button which will open the yaml file.
 4. The above yaml file will have preloaded entries, delete all of them.
 5. Now, [copy and paste this exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-route.yaml).
 6. Verify the "name" entry of the service under spec: matches the name of the service you created.
-7. [optional] you can change the name of the service.
+7. [optional] you can change the name of the route.
 8. Click on "Create"
 
 NOTE: We use this route to send requests to our resource consumer application deployed. 
 
 ### Create VPA Custom Resource in your namespace 
+
+#### Using kubectl
+1. Create a yaml file with the [exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-vpa.yaml)
+2. Change the following entries in the above yaml file:
+      1. Change the "namespace" under metadata, to your namespace name   
+      2. Change the "updateMode" to Initial. `updateMode: Initial` (since we are testing this one first)
+3. Execute the command `kubectl apply -f <vpa-deployment-yaml-file>`
+
+#### Using Web Console
 1. In Administrator tab, click on "Home" -> "API Explorer".
 2. Type "VerticalPodAutoscaler" in filter by kind text box on the top right.
 3. Click on "VerticalPodAutoscaler". (any version (v1/v1beta) is fine).
@@ -75,11 +110,19 @@ NOTE: We use this route to send requests to our resource consumer application de
 5. The above yaml file will have preloaded entries, delete all of them.
 6. Now, [copy and paste this exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-vpa.yaml)
 7. Change the following entries in the pasted yaml file:
-  1. Change the "namespace" under metadata, to your namespace   
-  2. Change the "updateMode" to Initial. `updateMode: Initial` (since we are testing this one first)
+      1. Change the "namespace" under metadata, to your namespace name.
+      2. Change the "updateMode" to Initial. `updateMode: Initial` (since we are testing this one first)
 9. Click on "Create"
 
 ### Create VPA Controller
+
+#### Using kubectl
+1. Create a yaml file with the [exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-vpa-controller.yaml)
+2. Change the following entries in the pasted yaml file:
+      1. Change the "namespace" under metadata, to your namespace   
+3. Execute the command `kubectl apply -f <vpa-deployment-yaml-file>`
+
+#### Using Web Console
 1. In Administrator tab, click on "Home" -> "API Explorer".
 2. Type "VerticalPodAutoscalerController" in filter by kind text box on the top right.
 3. Click on "VerticalPodAutoscalerController".
@@ -87,13 +130,16 @@ NOTE: We use this route to send requests to our resource consumer application de
 5. The above yaml file will have preloaded entries, delete all of them.
 6. Now, [copy and paste this exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-vpa-controller.yaml)
 7. Change the following entries in the pasted yaml file:
-  1. Change the "namespace" under metadata, to your namespace   
+      1. Change the "namespace" under metadata, to your namespace   
 9. Click on "Create"
 
 ## How to see VPA recommendation? 
 You can see VPA recommendations through ocp command line in terminal or in your OCP web console. We will list both the ways here
 
-### Through OCP web console
+### Using kubectl 
+`kubectl get vpa <vpa-custom-resource> --output yaml`
+
+### Using OCP web console
 1. In Administrator tab, click on "Home" -> "API Explorer".
 2. Type "VerticalPodAutoscalerController" in filter by kind text box on the top right.
 3. Click on "VerticalPodAutoscalerController"
