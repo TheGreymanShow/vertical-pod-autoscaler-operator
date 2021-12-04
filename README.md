@@ -1,6 +1,7 @@
 # Project Report
 
 ## Project Goal
+The goal of the project to install Vertical Pod Autoscaler in one of the live running namespaces 
 
 ## What is Vertical Pod AutoScaler (VPA)?
 
@@ -223,6 +224,7 @@ Once the recommendations changes, move to the next step.
 - The newly created pod will have the request value equal to the 'target' provided by the vpa recommendations.  
 
 ### How to check VPA changing the pod's metrics in Auto mode?
+
 
 ## VPA Limitations
 1. It takes time VPA to be autoscaled which is not happen instantly and is costly in terms of time. VPA does not generate recommendations based on sudden increases in resource usage. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
