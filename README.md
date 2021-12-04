@@ -6,6 +6,27 @@
 
 Vertical Pod Autoscaler automatically updates the limits and requests of resources (both CPU and memory) by reviewing the historic resource usages and as well their current. 
 
+### VPA Architecture
+VPA has three importent components. 
+1. VPA recommender
+2. VPA admission controller
+3. VPA Updater
+
+#### VPA Recommender 
+TODO
+#### VPA Admission Controller
+TODO
+#### VPA Updater
+TODO
+
+### VPA - 3 modes 
+VPA has three different modes. They are
+1. Off - VPA does not change the pod's request and limit. Just gives the recommendations for the containers.
+2. Initial - VPA applies the recommendations only during the pod's creation. 
+3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
+
+### Key Observations
+
 
 ## Tech Stack for this Demo
 - RedHat OpenShift Cluster Platform (OCP)
