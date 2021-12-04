@@ -20,13 +20,15 @@ TODO
 TODO
 
 ### VPA - 3 modes 
-VPA has three different modes. They are
+VPA can be configured in three different modes. They are
 1. Off - VPA does not change the pod's request and limit. Just gives the recommendations for the containers.
 2. Initial - VPA applies the recommendations only during the pod's creation. 
 3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
 
 ### Key Observations
-
+1. Log level
+  2. Initial log level for VPA pods (default vpa pods that are created when you install the vpa operator) will be 1.
+  3. You need to change the log level to atleast 4 to see the vpa logs such as metrics changed in Auto mode, creation mode and also the recommendations.
 
 ## Tech Stack for this Demo
 - RedHat OpenShift Cluster Platform (OCP)
