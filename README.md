@@ -226,6 +226,9 @@ Once the recommendations changes, move to the next step.
 ### How to check VPA changing the pod's metrics in Auto mode?
 
 
+
+
+
 ## VPA Limitations
 1. It takes time VPA to be autoscaled which is not happen instantly and is costly in terms of time. VPA does not generate recommendations based on sudden increases in resource usage. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
 2. Lack of configuration. There is not a lot of option that we can configure VPA promptly. It requires going over specs in detail to understand how it handles the upper and lower bound for example. We have to have flag for configuration options that we need to look at the status.
