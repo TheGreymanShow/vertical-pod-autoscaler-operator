@@ -197,7 +197,7 @@ Once the recommendations changes, move to the next step.
 
 ### How to check VPA changing the pod's metrics in Auto mode?
 
-### VPA Limitations
+## VPA Limitations
 1. It takes time VPA to be autoscaled which is not happen instantly and is costly in terms of time. VPA does not generate recommendations based on sudden increases in resource usage. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
 2. Lack of configuration. There is not a lot of option that we can configure VPA promptly. It requires going over specs in detail to understand how it handles the upper and lower bound for example. We have to have flag for configuration options that we need to look at the status.
 3. Metrics are not being exported. It does not matter where we deployed the VPA, this is needs to be managed at the operator level.
@@ -212,13 +212,13 @@ Once the recommendations changes, move to the next step.
 12. VPA recommendation might exceed available resources (e.g. Node size, available size, available quota) and cause pods to go pending. This can be partly addressed by using VPA together with Cluster Autoscaler.
 13. Multiple VPA resources matching the same pod have undefined behavior.
 
-### Future Work
+## Future Work
 1. Expose the VPA recommendations metrics using kube-state-metrics to query in PromQL. [Refer this](https://github.com/kubernetes/kube-state-metrics/blob/master/docs/verticalpodautoscaler-metrics.md).
 2. Install VPA in Jupyter Lab namespace in OCP
       1. Jupyter Lab namespace does not have deployments only has pods. (VPA only works with Deployments, StatefulSets, DaemonSets, ReplicaSets etc. You cannot use it with a standalone Pod that does not have an owner.)
       2. Hence, we can create a custom controller and associate it with pods and associate the created custom controller to VPA custom resource.
 
-### References
+## References
 
 ### Sprint demo videos
 * Sprint 1: https://www.youtube.com/watch?v=ywLisR5bDBU
