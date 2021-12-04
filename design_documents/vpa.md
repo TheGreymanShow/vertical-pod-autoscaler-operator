@@ -1,6 +1,4 @@
-# VPA Setup Guide
-
-This document introduces the VPA operator for Kubernetes, how it works and how you can set it up to use it for your cluster.
+# VPA
 
 ## Introduction
 
