@@ -13,22 +13,49 @@ VPA can be configured in three different modes. They are
 3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
 
 ### VPA Architecture
+
+![VPA Architecture](images/vpa_architecture.png)
+
 VPA has three importent components. 
 1. VPA recommender
 2. VPA admission controller
 3. VPA Updater
 
 #### VPA Recommender 
-TODO
-#### VPA Admission Controller
-TODO
-#### VPA Updater
-TODO
+VPA Recommender continously monitors the pod's resource levels (in our project, it gets the pod's resource levels using kube state metrics) and provides the recommendation values It also fills the recommendations in the VPA resource's output only field. 
 
-### Key Observations
-1. Log level
-  2. Initial log level for VPA pods (default vpa pods that are created when you install the vpa operator) will be 1.
-  3. You need to change the log level to atleast 4 to see the vpa logs such as metrics changed in Auto mode, creation mode and also the recommendations.
+These recommendations will have the following four fields:
+1. LowerBound - minimum resource levels recommended
+2. Target - the recommended resource level
+3. Uncapped Target - the recommended resource levels, without considering the `minAllowed` and `maxAllowed` restrictions in VPA
+4. UpperBound - maximum resource levels recommended
+
+#### VPA Admission Controller
+VPA admission controller acts only during two modes. `Auto` and `Initial`. It intercepts the pod's creation and updates their requests and limits with the recommended resources. 
+VPA admission controller calls the VPA recommender to get the recommended resources. It works in both pod's creation and recreation. 
+
+#### VPA Updater
+VPA Updater acts only during the `Auto` mode. VPA Updater is responsible for updating the resource levels in the running pod. 
+
+##### How and when does VPA updates the live running pod?
+VPA Updater continously montiors the resource levels and gets the recommendations from the VPA recommender. If the pod's resource requests, goes below the lowerbound or goes above the upperbound, VPA updater evicts the pod. The pod recreation will not be initiated by any of the VPA components. For this, VPA depends on the deployment's replicaset, resource policy and so on. 
+During the pod's recreation, it is the admission controller's job to apply the recommended resources. 
+
+### Logs Observations
+
+#### Log level
+Once the VPA operator is installed (refer this on how to install), it creates a default pod for each components. Initial log level for these VPA pods will be 1. You need to change the log level to atleast 4 to see the vpa logs such as metrics changed in Auto mode, creation mode and also the recommendations.
+
+#### Logs 
+##### VPA Recommender logs
+It will log when the recommendations have been changed.
+
+#### VPA Admission Controller
+It will log when the pod's resource recommendations are applied to the pod's creation/recreation. 
+
+#### VPA Updater
+It will log why the pod needs to be updates, and also logs why the pod need not be updated because they are well within the upper and lower limits. 
+
 
 ## Tech Stack for this Demo
 - RedHat OpenShift Cluster Platform (OCP)
@@ -200,18 +227,17 @@ Once the recommendations changes, move to the next step.
 ## VPA Limitations
 1. It takes time VPA to be autoscaled which is not happen instantly and is costly in terms of time. VPA does not generate recommendations based on sudden increases in resource usage. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
 2. Lack of configuration. There is not a lot of option that we can configure VPA promptly. It requires going over specs in detail to understand how it handles the upper and lower bound for example. We have to have flag for configuration options that we need to look at the status.
-3. Metrics are not being exported. It does not matter where we deployed the VPA, this is needs to be managed at the operator level. 
-4. Default configuration of VPA is defined with 250mb memory limit. This configuration can be changed in VPA api resource by using minAllowed definition, however, the default value may not be suitable for small applications.
-5. Vertical Pod autoscaling supports a maximum of 500 VerticalPodAutoscaler objects per cluster.
-6. Vertical Pod autoscaling is not yet ready for use with JVM-based workloads due to limited visibility into actual memory usage of the workload.
-7. Updating running pods is an experimental feature of VPA. Whenever VPA updates the pod resources the pod is recreated, which causes all running containers to be restarted. The pod may be recreated on a different node.
-8. VPA does not evict pods which are not run under a controller. For such pods Auto mode is currently equivalent to Initial.
-9. Vertical Pod Autoscaler should not be used with the Horizontal Pod Autoscaler (HPA) on CPU or memory at this moment. However, VPA can be used with HPA on custom and external metrics.
-10. The VPA admission controller is an admission webhook. If you add other admission webhooks to you cluster, it is important to analyze how they interact and whether they may conflict with each other. The order of admission controllers is defined by a flag on APIserver.
-11. VPA reacts to most out-of-memory events, but not in all situations.
-12. VPA performance has not been tested in large clusters.
-13. VPA recommendation might exceed available resources (e.g. Node size, available size, available quota) and cause pods to go pending. This can be partly addressed by using VPA together with Cluster Autoscaler.
-14. Multiple VPA resources matching the same pod have undefined behavior.
+3. Metrics are not being exported. It does not matter where we deployed the VPA, this is needs to be managed at the operator level.
+4. Vertical Pod autoscaling supports a maximum of 500 VerticalPodAutoscaler objects per cluster.
+5. Vertical Pod autoscaling is not yet ready for use with JVM-based workloads due to limited visibility into actual memory usage of the workload.
+6. Updating running pods is an experimental feature of VPA. Whenever VPA updates the pod resources the pod is recreated, which causes all running containers to be restarted. The pod may be recreated on a different node.
+7. VPA does not evict pods which are not run under a controller. For such pods Auto mode is currently equivalent to Initial.
+8. Vertical Pod Autoscaler should not be used with the Horizontal Pod Autoscaler (HPA) on CPU or memory at this moment. However, VPA can be used with HPA on custom and external metrics.
+9. The VPA admission controller is an admission webhook. If you add other admission webhooks to you cluster, it is important to analyze how they interact and whether they may conflict with each other. The order of admission controllers is defined by a flag on APIserver.
+10. VPA reacts to most out-of-memory events, but not in all situations.
+11. VPA performance has not been tested in large clusters.
+12. VPA recommendation might exceed available resources (e.g. Node size, available size, available quota) and cause pods to go pending. This can be partly addressed by using VPA together with Cluster Autoscaler.
+13. Multiple VPA resources matching the same pod have undefined behavior.
 
 ## Future Work
 1. Expose the VPA recommendations metrics using kube-state-metrics to query in PromQL. [Refer this](https://github.com/kubernetes/kube-state-metrics/blob/master/docs/verticalpodautoscaler-metrics.md).
