@@ -210,7 +210,7 @@ For the recommendations to change, we need to change the workload. We can do thi
 1. Copy the route you created for your deployment. 
 2. Copy and paste the following command in your terminal. 
 
-`curl --data "millicores=500&durationSec=300" <your-route>/ConsumeCPU`
+`curl --data "millicores=200&durationSec=300" <your-route>/ConsumeCPU`
 
 The above commands sends a request to increase the CPU load to 500 millicores for 300 seconds (5 minutes). Now you need to wait for 5 minutes for the request to finish.
 
@@ -224,10 +224,12 @@ Once the recommendations changes, move to the next step.
 - The newly created pod will have the request value equal to the 'target' provided by the vpa recommendations.  
 
 ### How to check VPA changing the pod's metrics in Auto mode?
+1. Use [this step](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/README.md#create-vpa-custom-resource-in-your-namespace) to update the `updateMode` to `Auto`. 
+2. Now [follow this step]() to change the workload to 500 for 5 hours. 
+3. Then, VPA should have updated the pods automatically. 
+4. If the pods are not automatically updated, follow step 2 again. This should do it. 
 
-
-
-
+NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitations for further details. 
 
 ## VPA Limitations
 1. It takes time VPA to be autoscaled which is not happen instantly and is costly in terms of time. VPA does not generate recommendations based on sudden increases in resource usage. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
