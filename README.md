@@ -39,7 +39,7 @@ VPA can be configured in three different modes. They are
   -  We use this application to test the vertical pod autoscaling by sending various HTTP load requests to resource consumer. 
  
 
-## Steps to setup VPA in your namespace
+## Steps to setup VPA
 You can setup these steps using kubectl in your terminal or through OpenShift Cluster web page. Both the ways are mentioned these. We would recommend using kubectl as it is much easier.  
 
 ### Prerequisites
