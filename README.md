@@ -6,6 +6,12 @@
 
 Vertical Pod Autoscaler automatically updates the limits and requests of resources (both CPU and memory) by reviewing the historic resource usages and as well their current. 
 
+### VPA modes 
+VPA can be configured in three different modes. They are
+1. Off - VPA does not change the pod's request and limit. Just gives the recommendations for the containers.
+2. Initial - VPA applies the recommendations only during the pod's creation. 
+3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
+
 ### VPA Architecture
 VPA has three importent components. 
 1. VPA recommender
@@ -18,12 +24,6 @@ TODO
 TODO
 #### VPA Updater
 TODO
-
-### VPA - 3 modes 
-VPA can be configured in three different modes. They are
-1. Off - VPA does not change the pod's request and limit. Just gives the recommendations for the containers.
-2. Initial - VPA applies the recommendations only during the pod's creation. 
-3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
 
 ### Key Observations
 1. Log level
