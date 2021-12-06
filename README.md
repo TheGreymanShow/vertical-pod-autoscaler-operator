@@ -1,5 +1,17 @@
 # Project Report
 
+Table of contents
+- [Terminologies](#Terminologies)
+- [Users & Personas of the project](#users--personas-of-the-project)
+- [Scope and Features of the project](scope-and-features-of-the-project)
+- [Solution Concept](#solution-concept)
+- [Tech Stack](#tech-stack)
+- [Steps to setup VPA](#steps-to-setup-vpa)
+- [VPA Limitations](#vpa-limitations)
+- [Future Work](#future-work)
+- [References](#references)
+  - [Sprint Demo videos](#sprint-demo-videos) 
+
 ## Terminologies
 
 ## Project Goal
@@ -30,7 +42,6 @@ The scope of the project includes configuring Vertical Pod Autoscaler(VPA) throu
 - [X] Proceed to implement VPA for all compute heavy workloads
 
 ## Solution Concept
-
 
 ### Vertical Pod AutoScaler (VPA)
 
@@ -90,7 +101,7 @@ It will log when the pod's resource recommendations are applied to the pod's cre
 It will log why the pod needs to be updates, and also logs why the pod need not be updated because they are well within the upper and lower limits. 
 
 
-## Tech Stack for this Demo
+## Tech Stack
 - RedHat OpenShift Cluster Platform (OCP)
   -  Note: VPA is provided by Kubernetes, so you can work with VPA with any other cloud platform, but we have used OCP and hence the instructions are provided for that here.
 - Resource Consumer application
