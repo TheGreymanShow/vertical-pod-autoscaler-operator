@@ -2,9 +2,6 @@
 
 Table of contents
 - [Terminologies](#Terminologies)
-  - [Cluster](#cluster)
-  - [Namespace](#namespace)
-  - [Pod](#pod)
 - [Users & Personas of the project](#users--personas-of-the-project)
 - [Scope and Features of the project](#scope-and-features-of-the-project)
 - [Solution Concept](#solution-concept)
