@@ -15,8 +15,15 @@ Table of contents
 
 ## Terminologies
 
+### Cluster
+
+### Namespace
+
+### Pod
+
+
 ## Project Goal
-The goal of the project to install Vertical Pod Autoscaler in one of the live running namespaces 
+The goal of the project to install Vertical Pod Autoscaler in one of the live running namespaces.
 
 ## Users & Personas of the project
 
