@@ -2,16 +2,30 @@
 
 Table of contents
 - [Terminologies](#Terminologies)
+  - [Cluster](#cluster)
+  - [Namespace](#namespace)
+  - [Pod](#pod)
 - [Users & Personas of the project](#users--personas-of-the-project)
 - [Scope and Features of the project](#scope-and-features-of-the-project)
 - [Solution Concept](#solution-concept)
+  - [Vertical Pod Autoscaler](#vertical-pod-autoscaler-vpa) 
+    - [VPA modes](#vpa-modes)
+    - [VPA Architecture](#vpa-architecture)
+    - [Logs Observations](#logs-observations)
 - [Tech Stack](#tech-stack)
 - [Steps to setup VPA](#steps-to-setup-vpa)
+  - [Steps to setup VPA](#steps-to-setup-vpa) 
+  - [Prerequisites](#prerequisites)
+  - [Install VPA operator](#install-vpa-operator-in-your-cluster-in-web-console)
+  - [Initial setup](#inital-setup-in-your-namespace)
+  - [Create VPA custom resource](#create-vpa-custom-resource-in-your-namespace)
+  - [Create VPA Controller](#create-vpa-controller)
 - [What we accomplished?](#what-we-accomplished)
 - [VPA Limitations](#vpa-limitations)
 - [Future Work](#future-work)
 - [References](#references)
   - [Sprint Demo videos](#sprint-demo-videos) 
+  - [External links](#external-links)
 
 ## Terminologies
 
@@ -23,29 +37,7 @@ Table of contents
 
 
 ## Project Goal
-
-In Kubernetes, while actual workloads run within containers, Pods are in fact the smallest deployable
-unit of computing. This means that all compute resources (CPU/Memory) for any workload are specified
-at the Pod level. In Kubernetes, both forms of compute resources, CPU and Memory, are specified in
-similar ways and are done so in a static manner. When managing workloads via Pod, a human operator
-will first specify what compute resources this Pod will require operating. It is not uncommon,
-however, for a workload to demand more resources at peak times, while remaining mostly dormant
-during off-peak hours. As one might expect, this results in either waste of compute resources or
-reduced pod performance.
-
-The solution here is to move away from manually specifying the compute resources for a pod that are
-static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod
-requires additional resources, and adjust its requirements accordingly during the lifetime of the
-Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically
-scale the resources for a pod based on its usage trends.
-
-The goal of this project is to transform Operate First OCP clusters from manually specifying compute
-resource requirements for pods and to use the VPA instead. Thus having all workloads automatically
-scale up/down their resources on a need basis. In addition, resource of some services in the
-Operate-First organization are not utilizing well. The Trino cluster is one of them, which receives
-more request during some events in some years, and it requires the service to use resources more
-effectively during these times. This also means that in other years the assigned resources to the
-service, will be idle and will cause waste of resources. VPA brings a solution to that.
+The goal of the project to install Vertical Pod Autoscaler in one of the live running namespaces.
 
 ## Users & Personas of the project
 
@@ -342,3 +334,7 @@ More details are documented [here](https://github.com/TheGreymanShow/vertical-po
 * Sprint 3: https://www.youtube.com/watch?v=Fw19E8Pim98
 * Sprint 4: https://www.youtube.com/watch?v=yjxxSzkpgz8
 * Sprint 5: https://www.youtube.com/watch?v=Got3TFkyAlA
+
+### External Links
+- [https://github.com/kubernetes/design-proposals-archive/blob/main/autoscaling/vertical-pod-autoscaler.md](https://github.com/kubernetes/design-proposals-archive/blob/main/autoscaling/vertical-pod-autoscaler.md)
+- [https://docs.openshift.com/container-platform/4.5/nodes/pods/nodes-pods-vertical-autoscaler.html](https://docs.openshift.com/container-platform/4.5/nodes/pods/nodes-pods-vertical-autoscaler.html)
