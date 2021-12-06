@@ -29,15 +29,15 @@ Table of contents
 
 ## Terminologies
 
-### Cluster
+#### Cluster
 
-### Namespace
+#### Namespace
 
-### Pod
+#### Pod
 
-### Service
+#### Service
 
-### Route
+#### Route
 
 
 ## Project Goal
