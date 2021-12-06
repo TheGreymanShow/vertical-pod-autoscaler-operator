@@ -282,6 +282,11 @@ NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitati
 4. Experimented various usage patterns of application CPU/Memory resources to determine if VPA is suitable for such candidates. 
 5. Documented VPA results that Operate-First team can refer to find suitable candidates for VPA, setup guidelines and our recommendations. 
 
+### Our Pull Requests
+- https://github.com/operate-first/apps/pull/1398
+- https://github.com/operate-first/apps/pull/1260
+- https://github.com/operate-first/apps/pull/1175
+
 ## VPA Limitations
 1. VPA adjusts the CPU and memory allocation values of a pod by deleting and re-created new pod with updated configs. Even though rolling deployment can be configured, this is not desirable for some applications as it restarts the pods. Updating running pods is an experimental feature of VPA.
 2. VPA does not instantly react to varying workload. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
