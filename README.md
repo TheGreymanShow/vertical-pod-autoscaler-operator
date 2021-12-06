@@ -329,6 +329,11 @@ NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitati
 - https://github.com/operate-first/apps/pull/1260
 - https://github.com/operate-first/apps/pull/1175
 
+## Project Timeline
+All the user stories and tasks of each sprint will be available in our [Taiga board](https://tree.taiga.io/project/amanbatra-cs6620-fall21-deploy-vertical-pod-autoscaler-operator/timeline). 
+
+
+
 ## VPA Limitations
 1. VPA adjusts the CPU and memory allocation values of a pod by deleting and re-created new pod with updated configs. Even though rolling deployment can be configured, this is not desirable for some applications as it restarts the pods. Updating running pods is an experimental feature of VPA.
 2. VPA does not instantly react to varying workload. Instead, it provides stable recommendations over a longer time period. For sudden increases, Horizontal Pod Autoscaler is a better option.
