@@ -303,12 +303,12 @@ For the recommendations to change, we need to change the workload. We can do thi
 
 The above commands sends a request to increase the CPU load to 500 millicores for 300 seconds (5 minutes). Now you need to wait for 5 minutes for the request to finish.
 
-### Check the recommendations
+#### Check the recommendations
 Now check the recommendations, it should be changed from the initial one. 
 If not, increase the `durationSec=1800` (30 minutes) and try again. 
 Once the recommendations changes, move to the next step.
 
-### Delete the pod
+#### Delete the pod
 - Delete the pod of your deployment, the pod will be automatically recreated since the resource policy is rolling-update. 
 - The newly created pod will have the request value equal to the 'target' provided by the vpa recommendations.  
 
