@@ -3,7 +3,7 @@
 Table of contents
 - [Terminologies](#Terminologies)
 - [Users & Personas of the project](#users--personas-of-the-project)
-- [Scope and Features of the project](scope-and-features-of-the-project)
+- [Scope and Features of the project](#scope-and-features-of-the-project)
 - [Solution Concept](#solution-concept)
 - [Tech Stack](#tech-stack)
 - [Steps to setup VPA](#steps-to-setup-vpa)
