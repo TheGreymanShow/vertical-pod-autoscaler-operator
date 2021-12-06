@@ -38,6 +38,10 @@ Table of contents
 
 ### Pod
 
+### Service
+
+### Route
+
 
 ## Project Goal
 In Kubernetes, while actual workloads run within containers, Pods are in fact the smallest deployable
