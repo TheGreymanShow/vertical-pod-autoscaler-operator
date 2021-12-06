@@ -7,6 +7,7 @@ Table of contents
 - [Solution Concept](#solution-concept)
 - [Tech Stack](#tech-stack)
 - [Steps to setup VPA](#steps-to-setup-vpa)
+- [What we accomplished?](#what-we-accomplished)
 - [VPA Limitations](#vpa-limitations)
 - [Future Work](#future-work)
 - [References](#references)
@@ -273,6 +274,8 @@ Once the recommendations changes, move to the next step.
 4. If the pods are not automatically updated, follow step 2 again. This should do it. 
 
 NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitations for further details. 
+
+## What we accomplished?
 
 ## VPA Limitations
 1. VPA adjusts the CPU and memory allocation values of a pod by deleting and re-created new pod with updated configs. Even though rolling deployment can be configured, this is not desirable for some applications as it restarts the pods. Updating running pods is an experimental feature of VPA.
