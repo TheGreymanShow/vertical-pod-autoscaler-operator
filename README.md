@@ -276,6 +276,11 @@ Once the recommendations changes, move to the next step.
 NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitations for further details. 
 
 ## What we accomplished?
+1. Successfully installed VPA Operator in Operate-First Kubernetes cluster (staging and production environments).
+2. Made Trino application of Operate-First define CPU/Memory resource requirments dynamically, rather than static declaration (staging and production environments).
+3. Created a Grafana dashboard than can visualize CPU/Memory utilization, requests and limits at pod level, helping to monitor effectiveness of VPA to any service.
+4. Experimented various usage patterns of application CPU/Memory resources to determine if VPA is suitable for such candidates. 
+5. Documented VPA results that Operate-First team can refer to find suitable candidates for VPA, setup guidelines and our recommendations. 
 
 ## VPA Limitations
 1. VPA adjusts the CPU and memory allocation values of a pod by deleting and re-created new pod with updated configs. Even though rolling deployment can be configured, this is not desirable for some applications as it restarts the pods. Updating running pods is an experimental feature of VPA.
