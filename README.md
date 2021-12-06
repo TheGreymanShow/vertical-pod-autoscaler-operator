@@ -37,7 +37,28 @@ Table of contents
 
 
 ## Project Goal
-The goal of the project to install Vertical Pod Autoscaler in one of the live running namespaces.
+In Kubernetes, while actual workloads run within containers, Pods are in fact the smallest deployable
+unit of computing. This means that all compute resources (CPU/Memory) for any workload are specified
+at the Pod level. In Kubernetes, both forms of compute resources, CPU and Memory, are specified in
+similar ways and are done so in a static manner. When managing workloads via Pod, a human operator
+will first specify what compute resources this Pod will require operating. It is not uncommon,
+however, for a workload to demand more resources at peak times, while remaining mostly dormant
+during off-peak hours. As one might expect, this results in either waste of compute resources or
+reduced pod performance.
+
+The solution here is to move away from manually specifying the compute resources for a pod that are
+static, and opt for a more automated scaling solution. The ideal solution would identify when a Pod
+requires additional resources, and adjust its requirements accordingly during the lifetime of the
+Pod. The Vertical Pod Autoscaler (VPA) was designed to specifically do this. The VPA will automatically
+scale the resources for a pod based on its usage trends.
+
+The goal of this project is to transform Operate First OCP clusters from manually specifying compute
+resource requirements for pods and to use the VPA instead. Thus having all workloads automatically
+scale up/down their resources on a need basis. In addition, resource of some services in the
+Operate-First organization are not utilizing well. The Trino cluster is one of them, which receives
+more request during some events in some years, and it requires the service to use resources more
+effectively during these times. This also means that in other years the assigned resources to the
+service, will be idle and will cause waste of resources. VPA brings a solution to that.
 
 ## Users & Personas of the project
 
