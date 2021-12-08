@@ -128,6 +128,7 @@ VPA admission controller calls the VPA recommender to get the recommended resour
 
 ##### VPA Updater
 VPA Updater acts only during the `Auto` mode. VPA Updater is responsible for updating the resource levels in the running pod. 
+VPA updater decides whether pods has to be updated or not based on the Lower Bound and Upper Bound values. VPA updater updates the pod if the pod's resource request is lower than the lower bound and higher than the upper bound values.
 
 ##### How and when does VPA updates the live running pod?
 VPA Updater continously montiors the resource levels and gets the recommendations from the VPA recommender. If the pod's resource requests, goes below the lowerbound or goes above the upperbound, VPA updater evicts the pod. The pod recreation will not be initiated by any of the VPA components. For this, VPA depends on the deployment's replicaset, resource policy and so on. 
