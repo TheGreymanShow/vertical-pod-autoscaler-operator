@@ -321,6 +321,51 @@ Once the recommendations changes, move to the next step.
 
 NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitations for further details. 
 
+## Trino VPA results from Smaug production cluster
+
+Initial resources of Trino, which is 1:2 ratio of request and limit: 
+
+```
+        - resources:
+            limits:
+              cpu: '8'
+              memory: 16Gi
+            requests:
+              cpu: '4'
+              memory: 8Gi
+```
+VPA recommendation: 
+
+```
+ Recommendation:
+    Container Recommendations:
+      Container Name:  trino-worker
+      Lower Bound:
+        Cpu:     1
+        Memory:  8275369965
+      Target:
+        Cpu:     1
+        Memory:  9616998332
+      Uncapped Target:
+        Cpu:     25m
+        Memory:  9616998332
+      Upper Bound:
+        Cpu:     1
+        Memory:  10103582223
+```
+With above recommendation of VPA, after capping the min and max resource limits in VPA, new resource values of trino is: 
+```
+        - resources:
+            limits:
+              cpu: '2'
+              memory: 16Gi
+            requests:
+              cpu: '1'
+              memory: 8Gi
+```
+**Result:** This is 75% reduction in CPU allocation and no change in memory, as Trino is a memory intensive application. Over the time, Trino will adjust according to load and thus accomplishes our goal.
+
+
 ## What we accomplished?
 1. Successfully installed VPA Operator in Operate-First Kubernetes cluster (staging and production environments of Smaug cluster).
 2. Made Trino application of Operate-First define CPU/Memory resource requirments dynamically, rather than static declaration (staging and production environments).
@@ -329,12 +374,13 @@ NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitati
 5. Documented VPA results that Operate-First team can refer to find suitable candidates for VPA, setup guidelines and our recommendations. 
 
 ### Our Pull Requests
-- https://github.com/operate-first/apps/pull/1398
-- https://github.com/operate-first/apps/pull/1260
-- https://github.com/operate-first/apps/pull/1175
-- https://github.com/operate-first/apps/pull/1374
-- https://github.com/operate-first/apps/pull/1393
-- https://github.com/operate-first/apps/pull/1171
+- Configure VPA custom resource for opf-trino namespace's trino-worker: https://github.com/operate-first/apps/pull/1398
+- Get openshift-vpa ns access: https://github.com/operate-first/apps/pull/1260
+- Add VPA operator to namespace of smaug cluster: https://github.com/operate-first/apps/pull/1175
+- Grafana dashboard: https://github.com/operate-first/apps/pull/1374
+- Added VPA Custom Resource manifest to opf-trino-stage: https://github.com/operate-first/apps/pull/1393
+- Playground ns on Smaug cluster: https://github.com/operate-first/apps/pull/1171
+- Add subscriptions for vpa and grafana operator in custom namespace: https://github.com/CCI-MOC/moc-apps/pull/58
 
 ## Project Timeline
 All the user stories and tasks of each sprint will be available in our [Taiga board](https://tree.taiga.io/project/amanbatra-cs6620-fall21-deploy-vertical-pod-autoscaler-operator/timeline). 
