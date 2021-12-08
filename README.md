@@ -69,14 +69,14 @@ service, will be idle and will cause waste of resources. VPA brings a solution t
 
 Our end users are:
 
-1. DevOps/Cluster admins of Smaug cluster: 
-    1. They manages cluster.
+1. DevOps/Cluster admins of Smaug cluster(in Operate-First org): 
+    1. They manage cluster.
     2. They monitor the resource utilization through monitoring tools like Grafana dashboards.
     3. They also configure alert mechanisms for situations like Out-of-memory and CPU throttling events.
-2. Developers who uses Smaug clusters: 
+2. Developers who uses Smaug cluster: 
     1. They deploy kubernetes/OpenShift applications or clusters.
 
-The purpose here is to have better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources efficiently.
+The purpose here is to have better CPU and memory utilization. DevOps developers and operators use these k8s clusters and they need to make sure to manage their resources efficiently.
 
 VPA scales pod utilization by sending CPU and memory requests based on utilization. With the help of the monitorization of resources, users can also track to see how VPA contributed to effectiveness.
 
