@@ -388,7 +388,7 @@ With above recommendation of VPA, after capping the min and max resource limits 
 - Add subscriptions for vpa and grafana operator in custom namespace: https://github.com/CCI-MOC/moc-apps/pull/58
 
 ## Project Timeline
-All the user stories and tasks of each sprint will be available in our [Taiga board](https://tree.taiga.io/project/amanbatra-cs6620-fall21-deploy-vertical-pod-autoscaler-operator/timeline). 
+All the user stories and tasks of each sprint is available in our [Taiga board](https://tree.taiga.io/project/amanbatra-cs6620-fall21-deploy-vertical-pod-autoscaler-operator/timeline). 
 
 
 
