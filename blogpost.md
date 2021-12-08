@@ -34,13 +34,13 @@ Now that we have explored the different autoscaling solutions that kubernetes pr
 
 Vertical Pod Autoscaler automatically updates the limits and requests of resources (both CPU and memory) by reviewing the historic resource usages and as well their current. 
 
-#### VPA modes 
+### VPA modes 
 VPA can be configured to work in three different modes. They are as follows: 
 1. Off - VPA does not change the pod's request and limit. Just gives the recommendations for the containers.
 2. Initial - VPA applies the recommendations only during the pod's creation. 
 3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
 
-#### VPA Architecture
+### VPA Architecture
 
 ![VPA Architecture](images/vpa_architecture.png)
 
@@ -52,7 +52,7 @@ VPA has three importent components.
 2. VPA admission controller
 3. VPA Updater
 
-##### VPA Recommender 
+#### VPA Recommender 
 VPA Recommender continously monitors the pod's resource levels (in our project, it gets the pod's resource levels using kube state metrics) and provides the recommendation values It also fills the recommendations in the VPA resource's output only field. 
 
 These recommendations will have the following four fields:
@@ -61,14 +61,14 @@ These recommendations will have the following four fields:
 3. Uncapped Target - the recommended resource levels, without considering the `minAllowed` and `maxAllowed` restrictions in VPA
 4. UpperBound - maximum resource levels recommended
 
-##### VPA Admission Controller
+#### VPA Admission Controller
 VPA admission controller acts only during two modes. `Auto` and `Initial`. It intercepts the pod's creation and updates their requests and limits with the recommended resources. 
 VPA admission controller calls the VPA recommender to get the recommended resources. It works in both pod's creation and recreation. 
 
-##### VPA Updater
+#### VPA Updater
 VPA Updater acts only during the `Auto` mode. VPA Updater is responsible for updating the resource levels in the running pod. 
 
-##### How and when does VPA updates the live running pod?
+#### How and when does VPA updates the live running pod?
 VPA Updater continously montiors the resource levels and gets the recommendations from the VPA recommender. If the pod's resource requests, goes below the lowerbound or goes above the upperbound, VPA updater evicts the pod. The pod recreation will not be initiated by any of the VPA components. For this, VPA depends on the deployment's replicaset, resource policy and so on. 
 During the pod's recreation, it is the admission controller's job to apply the recommended resources. 
 
