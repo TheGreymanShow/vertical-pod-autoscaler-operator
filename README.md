@@ -320,7 +320,7 @@ Once the recommendations changes, move to the next step.
 
 ### How to check VPA changing the pod's metrics in Auto mode?
 1. Use [this step](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/README.md#create-vpa-custom-resource-in-your-namespace) to update the `updateMode` to `Auto`. 
-2. Now [follow this step]() to change the workload to 500 for 5 hours. 
+2. Now [follow this step](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/README.md#change-the-workload) to change the workload to 500 for 5 hours. 
 3. Then, VPA should have updated the pods automatically. 
 4. If the pods are not automatically updated, follow step 2 again. This should do it. 
 
