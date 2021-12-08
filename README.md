@@ -292,7 +292,7 @@ You can see VPA recommendations through ocp command line in terminal or in your 
 4. Select the instance you created. 
 5. In the yaml file, your should see recommendations like below
 
-TODO: Attach a photo of recommendations here. 
+<img src="images/vpa_recommendations.png" alt="VPA Recommendations" width="400"/>
 
 ### How to check VPA changing the pod's metrics in Initial mode?
 
