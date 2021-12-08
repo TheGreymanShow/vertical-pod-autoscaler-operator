@@ -67,11 +67,14 @@ service, will be idle and will cause waste of resources. VPA brings a solution t
 
 ## Users & Personas of the project
 
-Our end-users are:
+Our end users are:
 
-1. DevOps engineers - monitoring and managing resource utilization. 
-2. Developers - deploying kubernetes/OpenShift applications or clusters.
-3. Cluster administrators - managing every cluster in a multi-cluster environment.
+1. DevOps/Cluster admins of Smaug cluster: 
+    1. They manages cluster.
+    2. They monitor the resource utilization through monitoring tools like Grafana dashboards.
+    3. They also configure alert mechanisms for situations like Out-of-memory and CPU throttling events.
+2. Developers who uses Smaug clusters: 
+    1. They deploy kubernetes/OpenShift applications or clusters.
 
 The purpose here is to have better CPU and memory utilization. DevOps developers and operators are touching clusters and they need to make sure to manage their resources efficiently.
 
