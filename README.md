@@ -350,7 +350,7 @@ All the user stories and tasks of each sprint will be available in our [Taiga bo
 6. Vertical Pod Autoscaler should not be used with the Horizontal Pod Autoscaler (HPA) on CPU or memory at this moment. However, VPA can be used with HPA on custom and external metrics.
 7. VPA performance has not been tested in large clusters.
 
-More details are documented [here](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/design_documents/vpa-limitations.md).
+More details about both advantages and limitations of VPA is documented [here](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/design_documents/vpa-limitations.md).
 
 
 ## Future Work
