@@ -33,7 +33,7 @@ Now that we have explored the different autoscaling solutions that kubernetes pr
 
 The following is the tech stack that we used for our project.
 
-- **Openshift Cluster:** For deploying 
+- **Openshift Cluster:** For deploying a new kubernetes based cluster
 - **VPA operator:** Operator installed for autoscaling the pods vertically
 - **Github:** for storing all code and config files
 - **Kube-state metrics:** for retrieving usage metrics from pods
@@ -51,13 +51,6 @@ We are assuming that you already have the following:
 
 ### Installing VPA
 Openshift provides a very easy way to install operators on your cluster via the OperatorHub. You can follow this [link](https://docs.openshift.com/container-platform/4.9/nodes/pods/nodes-pods-vertical-autoscaler.html#nodes-pods-vertical-autoscaler-install_nodes-pods-vertical-autoscaler) for detailed steps on how to install the VPA operator on your cluster.
-
-
-Notes:
-- Go to opertorhub and install VPA
-- Default VPA namespace
-- How to verify that you have your operator
-- add code snippets directly instead
 
 
 ### How to use VPA
@@ -140,7 +133,7 @@ Now you don’t need to break your head for selecting the sample application for
 7. [optional] you can change the name of the route.
 8. Click on "Create"
 
-#### NOTE:
+#### Note:
 - We use this route to send requests to our resource consumer application deployed. 
 - Once this deployment is running, it will constantly consume “x” CPU and “y” Memory depending on the values defined in your deployment yaml.
 - You can verify this by checking the resource usage graphs on your Openshift dashboard.
