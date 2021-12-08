@@ -20,6 +20,7 @@ Table of contents
   - [How to see VPA recommendations?](#how-to-see-vpa-recommendation)
   - [How to check VPA changing the pod metrics in Initial mode?](#how-to-check-vpa-changing-the-pods-metrics-in-initial-mode)
   - [How to check VPA changing the pod metrics in Auto mode?](#how-to-check-vpa-changing-the-pods-metrics-in-auto-mode)
+- [Trino VPA results](#trino-vpa-results-from-smaug-production-cluster)
 - [What we accomplished?](#what-we-accomplished)
 - [VPA Limitations](#vpa-limitations)
 - [Future Work](#future-work)
