@@ -307,7 +307,7 @@ For the recommendations to change, we need to change the workload. We can do thi
 
 `curl --data "millicores=200&durationSec=300" <your-route>/ConsumeCPU`
 
-The above commands sends a request to increase the CPU load to 500 millicores for 300 seconds (5 minutes). Now you need to wait for 5 minutes for the request to finish.
+The above commands sends a request to increase the CPU load to 200 millicores for 300 seconds (5 minutes). Now you need to wait for 5 minutes for the request to finish.
 
 #### Check the recommendations
 Now check the recommendations, it should be changed from the initial one. 
