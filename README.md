@@ -373,6 +373,12 @@ More details are documented [here](https://github.com/TheGreymanShow/vertical-po
 * Sprint 4: https://www.youtube.com/watch?v=yjxxSzkpgz8
 * Sprint 5: https://www.youtube.com/watch?v=Got3TFkyAlA
 
+### Blog post
+First draft: https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/blogpost.md
+
+### Project proposal/description 
+https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/project-description.md
+
 ### External Links
-- [https://github.com/kubernetes/design-proposals-archive/blob/main/autoscaling/vertical-pod-autoscaler.md](https://github.com/kubernetes/design-proposals-archive/blob/main/autoscaling/vertical-pod-autoscaler.md)
-- [https://docs.openshift.com/container-platform/4.5/nodes/pods/nodes-pods-vertical-autoscaler.html](https://docs.openshift.com/container-platform/4.5/nodes/pods/nodes-pods-vertical-autoscaler.html)
+- [VPA Design proposal](https://github.com/kubernetes/design-proposals-archive/blob/main/autoscaling/vertical-pod-autoscaler.md)
+- [VPA Operator documentation](https://docs.openshift.com/container-platform/4.5/nodes/pods/nodes-pods-vertical-autoscaler.html)
