@@ -29,20 +29,15 @@ Table of contents
 
 ## Terminologies
 
-#### Cluster
-A Kubernetes cluster is a set of nodes that runs containerized applications. This cluster can run containers across multiple machines. 
+* **Cluster:** A Kubernetes cluster is a set of nodes that runs containerized applications. This cluster can run containers across multiple machines. 
 
-#### Namespace
-In a cluster, namespace enables to provide isolated groups of resources. A cluster may contain multiple namespaces.
+* **Namespace:** In a cluster, namespace enables to provide isolated groups of resources. A cluster may contain multiple namespaces.
 
-#### Pod
-This is the smallest object in Kubernetes. Pods will be deployed in a single node and it runs applications in a set of 1 or more containers. 
+* **Pod**: This is the smallest object in Kubernetes. Pods will be deployed in a single node and it runs applications in a set of 1 or more containers. 
 
-#### Service
-A service is a REST object in Kubernetes. It is an abstract way to expose an application as a network service.
+* **Service**: A service is a REST object in Kubernetes. It is an abstract way to expose an application as a network service.
 
-#### Route
-Route in kubernetes, exposes the kubernetes service at a host name, so the users can access the applicaiton using this host name.
+* **Route**: Route in kubernetes, exposes the kubernetes service at a host name, so the users can access the applicaiton using this host name.
 
 
 ## Project Goal
