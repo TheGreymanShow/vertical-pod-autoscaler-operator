@@ -28,8 +28,52 @@ Vertical Autoscaling simply refers to adding more power to an existing instance.
 
 ## Goals
 Now that we have explored the different autoscaling solutions that kubernetes provides, let’s come back to the focus of this blog - Vertical Autoscaling. Our Goal with the project was to deploy a vertical pod autoscaler on a live production workload in RedHat’s operate-first org. But before deploying the VPA on the workload, we recognized that it was extremely important to test VPA on a sample application, simulate various real life workload simulations to observe whether VPA reacts as expected by increasing or decreasing the resources appropriately. We’ll discuss all the experiments we did with VPA in this blog before being confident of deploying it on a real production workload.
- 
-## Setup
+
+
+## Vertical Pod AutoScaler (VPA)
+
+Vertical Pod Autoscaler automatically updates the limits and requests of resources (both CPU and memory) by reviewing the historic resource usages and as well their current. 
+
+#### VPA modes 
+VPA can be configured to work in three different modes. They are as follows: 
+1. Off - VPA does not change the pod's request and limit. Just gives the recommendations for the containers.
+2. Initial - VPA applies the recommendations only during the pod's creation. 
+3. Auto - VPA automatically applies the recommendations when the resource usage goes beyond the lowerbound and upperbound.
+
+#### VPA Architecture
+
+![VPA Architecture](images/vpa_architecture.png)
+
+VPA Architecture [Image Source](https://banzaicloud.com/blog/k8s-vertical-pod-autoscaler/)
+
+
+VPA has three importent components. 
+1. VPA recommender
+2. VPA admission controller
+3. VPA Updater
+
+##### VPA Recommender 
+VPA Recommender continously monitors the pod's resource levels (in our project, it gets the pod's resource levels using kube state metrics) and provides the recommendation values It also fills the recommendations in the VPA resource's output only field. 
+
+These recommendations will have the following four fields:
+1. LowerBound - minimum resource levels recommended
+2. Target - the recommended resource level
+3. Uncapped Target - the recommended resource levels, without considering the `minAllowed` and `maxAllowed` restrictions in VPA
+4. UpperBound - maximum resource levels recommended
+
+##### VPA Admission Controller
+VPA admission controller acts only during two modes. `Auto` and `Initial`. It intercepts the pod's creation and updates their requests and limits with the recommended resources. 
+VPA admission controller calls the VPA recommender to get the recommended resources. It works in both pod's creation and recreation. 
+
+##### VPA Updater
+VPA Updater acts only during the `Auto` mode. VPA Updater is responsible for updating the resource levels in the running pod. 
+
+##### How and when does VPA updates the live running pod?
+VPA Updater continously montiors the resource levels and gets the recommendations from the VPA recommender. If the pod's resource requests, goes below the lowerbound or goes above the upperbound, VPA updater evicts the pod. The pod recreation will not be initiated by any of the VPA components. For this, VPA depends on the deployment's replicaset, resource policy and so on. 
+During the pod's recreation, it is the admission controller's job to apply the recommended resources. 
+
+
+## Setting up VPA on your Cluster
 
 The following is the tech stack that we used for our project.
 
@@ -49,12 +93,11 @@ We are assuming that you already have the following:
 - `openshift command line interface` installed. Refer this link
 - [Only for kubectl] login to your OCP in terminal (Use copy login command)
 
-### Installing VPA
+### How to install VPA
 Openshift provides a very easy way to install operators on your cluster via the OperatorHub. You can follow this [link](https://docs.openshift.com/container-platform/4.9/nodes/pods/nodes-pods-vertical-autoscaler.html#nodes-pods-vertical-autoscaler-install_nodes-pods-vertical-autoscaler) for detailed steps on how to install the VPA operator on your cluster.
 
 
 ### How to use VPA
-
 VPA introduces a couple of Custom Resource Definitions (CRD for short) to control automatic recommendations behavior. Typically Developers would add a VerticalPodAutoscaler object to their application deployments, and a VerticalPodAutoscalerController as a Controller for this Resource Definition. You need to define these two objects, in order to use VPA.
 
 On your Openshift dashboard, as an administrator, 
