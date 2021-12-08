@@ -371,9 +371,11 @@ More details are documented [here](https://github.com/TheGreymanShow/vertical-po
 ### Blog post
 First draft: https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/blogpost.md
 
-### Project proposal/description 
-https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/project-description.md
+### Documents
+* Project proposal/description: https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/project-description.md
+* Candidate analysis to simulate CPU/Memory workload: https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/design_documents/vpa-load-testing-candidate.md (Chosen candidate: Resource consumer)
 
 ### External Links
 - [VPA Design proposal](https://github.com/kubernetes/design-proposals-archive/blob/main/autoscaling/vertical-pod-autoscaler.md)
 - [VPA Operator documentation](https://docs.openshift.com/container-platform/4.5/nodes/pods/nodes-pods-vertical-autoscaler.html)
+- [Resource Consumer](https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer)
