@@ -327,7 +327,7 @@ Once the recommendations changes, move to the next step.
 NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitations for further details. 
 
 ## What we accomplished?
-1. Successfully installed VPA Operator in Operate-First Kubernetes cluster (staging and production environments).
+1. Successfully installed VPA Operator in Operate-First Kubernetes cluster (staging and production environments of Smaug cluster).
 2. Made Trino application of Operate-First define CPU/Memory resource requirments dynamically, rather than static declaration (staging and production environments).
 3. Created a Grafana dashboard than can visualize CPU/Memory utilization, requests and limits at pod level, helping to monitor effectiveness of VPA to any service.
 4. Experimented various usage patterns of application CPU/Memory resources to determine if VPA is suitable for such candidates. 
@@ -337,6 +337,9 @@ NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitati
 - https://github.com/operate-first/apps/pull/1398
 - https://github.com/operate-first/apps/pull/1260
 - https://github.com/operate-first/apps/pull/1175
+- https://github.com/operate-first/apps/pull/1374
+- https://github.com/operate-first/apps/pull/1393
+- https://github.com/operate-first/apps/pull/1171
 
 ## Project Timeline
 All the user stories and tasks of each sprint will be available in our [Taiga board](https://tree.taiga.io/project/amanbatra-cs6620-fall21-deploy-vertical-pod-autoscaler-operator/timeline). 
