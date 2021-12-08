@@ -24,7 +24,7 @@ Horizontal autoscaling refers to the ability to scale wider as per the increasin
 Vertical Autoscaling simply refers to adding more power to an existing instance. It resizes the server with no modifications to the base code. It is the ability to enhance the capacity of the existing hardware or software by including additional resources.
 
 #### How Kubernetes handles it
-Where the HPA allocates pod replicas in order to manage resources, the Vertical Pod Autoscaler (VPA) simply allocates more (or less) CPUs and memory to existing pods. This can be used just to initialize the resources given to each pod at creation, or to actively monitor and scale each pod’s resources over its lifetime. 
+- Where the HPA allocates pod replicas in order to manage resources, the Vertical Pod Autoscaler (VPA) simply allocates more (or less) CPUs and memory to existing pods. This can be used just to initialize the resources given to each pod at creation, or to actively monitor and scale each pod’s resources over its lifetime. 
 
 ## Goals
 Now that we have explored the different autoscaling solutions that kubernetes provides, let’s come back to the focus of this blog - Vertical Autoscaling. Our Goal with the project was to deploy a vertical pod autoscaler on a live production workload in RedHat’s operate-first org. But before deploying the VPA on the workload, we recognized that it was extremely important to test VPA on a sample application, simulate various real life workload simulations to observe whether VPA reacts as expected by increasing or decreasing the resources appropriately. We’ll discuss all the experiments we did with VPA in this blog before being confident of deploying it on a real production workload.
@@ -33,12 +33,12 @@ Now that we have explored the different autoscaling solutions that kubernetes pr
 
 The following is the tech stack that we used for our project.
 
-- Openshift Cluster: For deploying 
-- VPA operator: Operator installed for autoscaling the pods vertically
-- Github: for storing all code and config files
-- Kube-state metrics: for retrieving usage metrics from pods
-- Prometheus: Storing these metrics in time-series format database
-- Grafana: visualizing the real time metrics by creating a dashboard
+- **Openshift Cluster:** For deploying 
+- **VPA operator:** Operator installed for autoscaling the pods vertically
+- **Github:** for storing all code and config files
+- **Kube-state metrics:** for retrieving usage metrics from pods
+- **Prometheus:** Storing these metrics in time-series format database
+- **Grafana:** visualizing the real time metrics by creating a dashboard
 
 
 We are assuming that you already have the following:
@@ -106,13 +106,17 @@ spec:
 
 Once you have your VPA object and controller setup, we can now try to test it on any application deployed on the cluster and check how it reacts to some basic scenarios such as memory/cpu over and under utilization. 
 
-Now you don’t need to break your head for selecting the sample application for testing, fortunately there already exists an application built for this exact purpose. Resource Consumer is a tool which allows to generate cpu/memory utilization in a container. The reason why it was created is testing Kubernetes autoscaling. You can find the source code for this tool here. 
+Now you don’t need to break your head for selecting the sample application for testing, fortunately there already exists an application built for this exact purpose. Resource Consumer is a tool which allows to generate cpu/memory utilization in a container. The reason why it was created is testing Kubernetes autoscaling. You can find the source code for this tool here. Now follow the following 3 steps to create a deployment, service and a route for this Resource Consumer Application on your cluster.
 
-It works as follows:
-- Docker image of Resource Consumer can be found in Google Container Registry as gcr.io/k8s-staging-e2e-test-images/resource-consumer:1.9
-- Create a deployment with this docker image in your cluster. You can copy this [file](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-depl.yaml) to create the deployment.
-- Once this deployment is running, it will constantly consume “x” CPU and “y” Memory depending on the values defined in your deployment yaml.
-- You can verify this by checking the resource usage graphs on your Openshift dashboard. 
+#### Create a deployment
+
+1. Go to "Workloads" in your namespace under "Administrator" tab in moc/smaug.
+2. Click on "Deployments" on the left side navigation bar.
+3. Click on "Create Deployments" button which will open the yaml file. 
+4. The yaml file will have preloaded entries, delete all of them.
+5. Now, [copy and paste this exact yaml entries](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/install/rc-depl.yaml).
+6. [Optional] you can change the name of the deployment, containers and app.
+7. Click on "Create"
 
 #### Create a service
 
@@ -136,7 +140,10 @@ It works as follows:
 7. [optional] you can change the name of the route.
 8. Click on "Create"
 
-NOTE: We use this route to send requests to our resource consumer application deployed.
+#### NOTE:
+- We use this route to send requests to our resource consumer application deployed. 
+- Once this deployment is running, it will constantly consume “x” CPU and “y” Memory depending on the values defined in your deployment yaml.
+- You can verify this by checking the resource usage graphs on your Openshift dashboard.
 
 
 ### Observing VPA changes
@@ -149,21 +156,17 @@ To change the workload, hit the following curl command
 
 This request ensures that 300 millicores of CPU will be consumed for 600 seconds. 
 
-To check VPA’s new recommendation values, you can go to the VPA object yaml that you created and check the value assigned for `target-recommendation` key. It should be somewhat close to 300 millicores depending on the initial value you set while deploying the rc app. The more you change the load using the above command, the recommendation values will change indicating that VPA is monitoring your application resource usage, and reacting accordingly.
+To check VPA’s new recommendation values, 
+- you can go to the VPA object yaml that you created and check the value assigned for `target-recommendation` key. 
+- It should be somewhat close to 300 millicores depending on the initial value you set while deploying the rc app. 
+- The more you experiment by changing the load using the above command, the recommendation values will change indicating that VPA is monitoring your application resource usage, and reacting accordingly.
  
  
 ### Key observations made after initial testing
+- VPA reacts to Over & under utilization well
+- VPA Recommendations are instant
+- But updating pods with new recommendations is not instant
 
-
-#### VPA reacts to Over & under utilization well
-
-
-#### VPA Recommendations are instant
-
-
-#### But updating pods with new recommendations is not instant
-
-  
   
 ## Workload Simulation
 
