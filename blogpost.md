@@ -189,10 +189,7 @@ Explain different Workload simulation scenarios and how to set them up
 ## Future Work
 
 - Expose the VPA recommendations metrics using kube-state-metrics to query in PromQL. 
-- Install VPA in Jupyter Lab namespace in OCP
-- Jupyter Lab namespace does not have deployments only has pods. 
-- VPA only works with Deployments, StatefulSets, DaemonSets, ReplicaSets etc. You cannot use it with a standalone Pod that does not have an owner.
-- Hence, we can create a custom controller and associate it with pods and associate the created custom controller to VPA custom resource.
+- Install VPA in Jupyter Lab namespace in OCP. Jupyter Lab namespace does not have deployments only has pods. VPA only works with Deployments, StatefulSets, DaemonSets, ReplicaSets etc. You cannot use it with a standalone Pod that does not have an owner. Hence, we can create a custom controller and associate it with pods and associate the created custom controller to VPA custom resource.
 
 
 ## Credits
