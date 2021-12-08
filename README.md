@@ -325,7 +325,7 @@ NOTE: VPA Auto mode does not instantly update the pod. Please refer the limitati
 1. Successfully installed VPA Operator in Operate-First Kubernetes cluster (staging and production environments of Smaug cluster).
 2. Made Trino application of Operate-First define CPU/Memory resource requirments dynamically, rather than static declaration (staging and production environments).
 3. Created a Grafana dashboard than can visualize CPU/Memory utilization, requests and limits at pod level, helping to monitor effectiveness of VPA to any service.
-4. Experimented various usage patterns of application CPU/Memory resources to determine if VPA is suitable for such candidates. 
+4. [Experimented various usage patterns](https://github.com/TheGreymanShow/vertical-pod-autoscaler-operator/blob/main/design_documents/vpa-observations.md) of application CPU/Memory resources to determine if VPA is suitable for such candidates. 
 5. Documented VPA results that Operate-First team can refer to find suitable candidates for VPA, setup guidelines and our recommendations. 
 
 ### Our Pull Requests
