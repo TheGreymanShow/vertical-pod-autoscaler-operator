@@ -386,6 +386,7 @@ With above recommendation of VPA, after capping the min and max resource limits 
 - Added VPA Custom Resource manifest to opf-trino-stage: https://github.com/operate-first/apps/pull/1393
 - Playground ns on Smaug cluster: https://github.com/operate-first/apps/pull/1171
 - Add subscriptions for vpa and grafana operator in custom namespace: https://github.com/CCI-MOC/moc-apps/pull/58
+- Set updatePolicy to Auto in opf-trino vpa: https://github.com/operate-first/apps/pull/1421
 
 ## Project Timeline
 All the user stories and tasks of each sprint is available in our [Taiga board](https://tree.taiga.io/project/amanbatra-cs6620-fall21-deploy-vertical-pod-autoscaler-operator/timeline). 
