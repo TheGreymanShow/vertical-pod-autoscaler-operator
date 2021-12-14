@@ -17,6 +17,7 @@ spec:
             - curl --data "millicores=600&durationSec=500" http://rc-vpa-neu-cs6620.apps.smaug.na.operate-first.cloud/ConsumeCPU
             - echo "DONE!"
           restartPolicy: OnFailure
+
 ---
 apiVersion: batch/v1
 kind: CronJob
